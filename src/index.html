@@ -6,19 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./styles/main.css">
-    <title>Document</title>
+    <title>Nutshell Alien Abductees</title>
 </head>
 
 <body>
-    <article class="container">
+    <header>
+        <h1>Nutshell Alien Abductees</h1>
+        <div class="currentWeatherContainer"></div>
+    </header>
+
+    <main class="container">
         <article class="auth">
             <section class="auth--login"></section>
             <section class="auth--register"></section>
         </article>
-        <article class="dashboard">
-            <!-- All your Nutshell are belong here -->
+
+        <!-- All your Nutshell are belong here -->
+        <article class="nutshell">
+
+            <!-- Container to hold the NavBar component -->
+            <div class="navBarContainer"></div>
+
+            <!-- All forms to create new things will render here -->
+            <div class="formContainer"></div>
+
+            <!-- Main dashboard area: contains Messages, News, Events, Tasks lists -->
+            <div class="dashboard">
+
+                <!-- Aside to hold friends and chat/message list, left column of Dashboard -->
+                <aside class="sidebar">
+                    <section class="friendsContainer"></section>
+                    <section class="chatContainer"></section>
+                </aside>
+
+                <!-- Div to hold other components in dashboard, right column of Dashboard -->
+                <article class="contentContainer">
+                    <section class="newsContainer"></section>
+                    <section class="eventsContainer"></section>
+                    <section class="tasksContainer"></section>
+                </article>
+            </div>
         </article>
-    </article>
+    </main>
 
     <script src="./scripts/main.js" type="module"></script>
 
