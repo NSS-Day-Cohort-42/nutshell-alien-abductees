@@ -10,11 +10,11 @@ eventHub.addEventListener("click", event => {
 })
 
 export const Message = messageObj => {
-  const { id, message, userId, username, timestamp } = messageObj;
+  const { id, message, userId, user, timestamp } = messageObj;
 
   return `
     <div class="message">
-      <p>User ID: ${userId}</p>
+      <p id="chatMessage--${userId}">${user.username}:</p>
       <p>${message}</p>
       ${ messageDeleteButton(id, userId) }
     </div>

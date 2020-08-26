@@ -8,7 +8,7 @@ const broadcastMessagesStateChanged = () => {
 }
 
 export const getMessages = () => {
-  return fetch("http://localhost:8088/messages")
+  return fetch("http://localhost:8088/messages?_expand=user")
     .then(res => res.json())
     .then(messagesData => messages = messagesData)
 }
