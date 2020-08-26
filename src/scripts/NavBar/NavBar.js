@@ -39,7 +39,7 @@ export const NavBar = () => {
       <button class="navBar__button" id="createEvent">New Event</button>
       <button class="navBar__button" id="createNewsStory">New News Story</button>
       <button class="navBar__button" id="addFriend">Add a Friend</button>
-      <button class="navBar__button" id="cancelForm">Home</button>
+      <button class="navBar__button" id="cancelForm">Cancel Form</button>
     </nav>
   `
 }

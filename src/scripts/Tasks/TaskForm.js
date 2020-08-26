@@ -54,6 +54,7 @@ eventHub.addEventListener("click", clickEvent => {
             editTask(editedTask)
             id.value = ""
         }
+        contentTarget.innerHTML = "" // wipe out formContainer after submit task
     } else {
         window.alert("Please complete all fields")
     }
