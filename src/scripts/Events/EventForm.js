@@ -1,3 +1,6 @@
+//emily h
+//renders the form that allows users to create events
+
 import { saveEvents } from "./EventDataProvider.js"
 
 const eventHub = document.querySelector(".container")

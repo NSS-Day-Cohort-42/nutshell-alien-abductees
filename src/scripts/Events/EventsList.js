@@ -1,3 +1,6 @@
+//emily h
+//combines info from the provider and events.js to render events that have already been created
+
 import { getEvents, useEvents } from "./EventDataProvider.js"
 import {eventsHTML} from "./Events.js"
 
