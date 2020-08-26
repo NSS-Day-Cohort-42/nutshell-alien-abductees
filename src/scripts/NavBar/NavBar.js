@@ -1,7 +1,7 @@
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".navBarContainer")
 
-eventHub.addEventListener("cancelFormClicked", () => {
+eventHub.addEventListener("closeFormClicked", () => {
   document.querySelector(".formContainer").innerHTML = ""
 })
 
@@ -27,8 +27,8 @@ const getCustomEventNameFromButtonId = buttonId => {
     case "addFriend":
       return "addFriendClicked"
 
-    case "cancelForm":
-      return "cancelFormClicked"
+    case "closeForm":
+      return "closeFormClicked"
   }
 }
 
@@ -39,7 +39,7 @@ export const NavBar = () => {
       <button class="navBar__button" id="createEvent">New Event</button>
       <button class="navBar__button" id="createNewsStory">New News Story</button>
       <button class="navBar__button" id="addFriend">Add a Friend</button>
-      <button class="navBar__button" id="cancelForm">Cancel Form</button>
+      <button class="navBar__button" id="closeForm">Close Form</button>
     </nav>
   `
 }
