@@ -21,17 +21,23 @@ eventHub.addEventListener("click", event => {
 
   else if(prefix === "addFriend") {
     // saveFriend(id) // will eventually be written in FriendProvider and will save the friend with the given ID as a friend of the currently logged in user
+    const dialogNode = document.querySelector(`#addFriendDialog--${id}`)
+    dialogNode.close()
   }
 })
 
 export const Message = messageObj => {
   const { id, message, userId, user, timestamp } = messageObj;
 
+  const isActiveUser = userId === parseInt(sessionStorage.getItem("activeUser"))
+
   return `
     <div class="message">
-      <button class="message__username" id="openAddFriendDialog--${userId}">${user.username}:</button>
-      <p class="message__text">${message}</p>
-      ${ messageDeleteButton(id, userId) }
+      <div class="message__username-and-text-wrapper">
+        <button class="message__username" id="openAddFriendDialog--${userId}" ${isActiveUser ? "disabled" : ""}>${user.username}:</button>
+        <p class="message__text">${message}</p>
+      </div>
+      ${ messageDeleteButton(id, isActiveUser) }
 
       <dialog class="dialog friend-dialog" id="addFriendDialog--${userId}">
         <p class="friend-dialog__prompt">Would you like to add ${user.username} as a friend?</p>
@@ -45,9 +51,8 @@ export const Message = messageObj => {
 /**
  * If the given userId matches the userId of the activeUser, then return a button that will allow the user to delete the message... otherwise they should not be able to delete the message so just return an empty string
  */
-const messageDeleteButton = (messageId, userId) => {
-  const activeUser = parseInt(sessionStorage.getItem("activeUser"))
-  if(userId === activeUser) {
+const messageDeleteButton = (messageId, isActiveUser) => {
+  if(isActiveUser) {
     return `
       <button class="message__deleteButton" id="deleteMessage--${messageId}">Delete Message</button>
     `

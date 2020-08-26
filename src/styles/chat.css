@@ -1,0 +1,20 @@
+.messageList {
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+.message {
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+.message__username-and-text-wrapper {
+  display: flex;
+}
+
+.message__username {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  color: blue;
+}
