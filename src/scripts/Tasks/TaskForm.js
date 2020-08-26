@@ -14,6 +14,8 @@ eventHub.addEventListener("createTaskClicked", () => {
 
 //listens for edit button click Event
 eventHub.addEventListener("editClicked", customEvent => {
+    render()
+
     const allTasks = useTasks()
     const taskId = customEvent.detail.taskId
     const taskObjToEdit = allTasks.find(taskObj => taskId === taskObj.id)
