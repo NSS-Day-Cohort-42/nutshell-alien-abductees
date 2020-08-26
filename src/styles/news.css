@@ -1,0 +1,10 @@
+.newsForm{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+}
+
+

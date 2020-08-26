@@ -17,7 +17,11 @@ export const NewsList = () =>{
 }
 
 const renderNews = () =>{
-    contentTarget.innerHTML = allNews.map(article =>{
+    const sortedNews = allNews.sort(function(a,b){
+        return new Date(b.timestamp) - new Date(a.timestamp)
+      })
+    
+    contentTarget.innerHTML = sortedNews.map(article =>{
         return newsHTML(article)
     }).join("")
 }
