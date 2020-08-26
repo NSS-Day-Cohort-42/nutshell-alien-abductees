@@ -4,7 +4,7 @@ import {eventsHTML} from "./Events.js"
 
 
 
-const contentTarget = document.querySelector(".contentContainer")
+const contentTarget = document.querySelector(".eventsContainer")
 //const eventHub = document.querySelector(".container")
 
 
