@@ -3,22 +3,22 @@
 
 import settings from "../../Settings.js"
 
-let weather = []
+let eventWeather = []
 let nashWeather = []
 
 export const useWeather = () => {
-    return weather.slice()
+    return eventWeather
 }
 
 export const useNashvilleWeather = () => {
     return nashWeather
 }
 
-export const getWeather = (locationObj) => {
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${locationObj.zip}&appid=${settings.weatherKey}&units=imperial`)
+export const getEventWeather = (locationObj) => {
+    return fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${locationObj.zip}&appid=${settings.weatherKey}&units=imperial`)
         .then(res => res.json())
         .then(weatherData => {
-            weather = weatherData
+            eventWeather = weatherData
         })
 }
 
