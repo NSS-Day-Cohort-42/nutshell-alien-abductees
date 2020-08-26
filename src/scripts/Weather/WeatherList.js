@@ -1,16 +1,22 @@
-import { weatherHTML } from "./Weather"
+import { weatherHTML } from "./Weather.js"
+import { getNasvilleWeather, useNashvilleWeather } from "./WeatherDataProvider.js"
 
 
 
-const eventHub = document.querySelector(".container")
+//const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".currentWeatherContainer")
 
 export const weatherList = () => {
-    contentTarget.innerHTML = `<h3 class"currentWeatherHeader">Current Weather</h3>`
-    render ()
+ render()
 }
 
-const render = (weatherObj) => {
-    contentTarget.innerHTML += 
-        weatherHTML(weatherObj)
+const render = () => {
+    getNasvilleWeather()
+        .then(() => {
+            const weather = useNashvilleWeather()
+            contentTarget.innerHTML = `
+            <h3 class"currentWeatherHeader">Current Weather for Nashville</h3>
+            ${weatherHTML(weather)}` 
+        })
+
 }

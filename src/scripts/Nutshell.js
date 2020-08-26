@@ -6,6 +6,7 @@ import { eventList } from "./Events/EventsList.js"
 import { eventForm } from "./Events/EventForm.js"
 import { NewsList } from "./News/NewsList.js"
 import { NewsForm } from "./News/NewsForm.js"
+import { weatherList } from "./Weather/WeatherList.js"
 
 export const Nutshell = () => {
     // Render all your UI components here
@@ -18,4 +19,7 @@ export const Nutshell = () => {
     eventList()
     NewsList()
     NewsForm()
+
+    weatherList()
+
 }
