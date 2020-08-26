@@ -5,6 +5,16 @@ export const useNews = () =>{
     return news.slice()
 }
 
+const dispatchStateChangeEvent = () =>{
+    const newsStateChangeEvent = new CustomEvent("newsStateChanged")
+
+    eventHub.dispatchEvent(newsStateChangeEvent)
+}
+
+eventHub.addEventListener("friendStateChanged", customEvent=>{
+    getNews()
+    .then(dispatchStateChangeEvent)
+})
 
 
 export const getNews = () =>{
