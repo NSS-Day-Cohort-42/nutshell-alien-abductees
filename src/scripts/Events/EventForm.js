@@ -33,7 +33,7 @@ eventHub.addEventListener("click", clickEvent => {
 
 export const eventForm = () => {
     contentTarget.innerHTML = `
-        <div>
+        <div class="eventForm">
             <h2 class="eventFormTitle"> Create New Event</h2>
                 <fieldset>
                     <label for="eventTitle">Event Title: </label>
