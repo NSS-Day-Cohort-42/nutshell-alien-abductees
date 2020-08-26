@@ -37,7 +37,7 @@ eventHub.addEventListener("click", clickEvent => {
             const newTask = {
                 task: taskName.value,
                 targetDate: taskTargetDate.value,
-                userId: sessionStorage.getItem("activeUser")
+                userId: parseInt(sessionStorage.getItem("activeUser"))
             }
             saveTask(newTask)
         } else {
