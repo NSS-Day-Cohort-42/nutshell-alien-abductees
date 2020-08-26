@@ -44,13 +44,12 @@ export const saveEvents = (event) => {
     .then(dispatchEventState)
 }
 
-export const deleteEvents = (eventId) => {
-    return fetch('http://localhost:8088/events/${eventId}', {
+export const deleteEvent = (eventId) => {
+    return fetch(`http://localhost:8088/events/${eventId}`, {
         method: "DELETE"
     })
         .then(getEvents)
         .then(dispatchEventState)
-
 }
 
 //sessionStorage.getItem(“activeUser”)
@@ -58,7 +57,7 @@ export const deleteEvents = (eventId) => {
     
 /*
 export const editEvent = (eventId) => {
-    return  fetch('http://localhost:8088/events/${eventId}', {
+    return  fetch(`http://localhost:8088/events/${eventId}`, {
         method: "PUT"
     })
         .then(getEntries)
