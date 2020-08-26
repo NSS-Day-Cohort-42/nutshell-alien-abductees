@@ -1,3 +1,14 @@
+import { deleteMessage } from "./MessageDataProvider.js"
+
+const eventHub = document.querySelector(".container")
+
+eventHub.addEventListener("click", event => {
+  if(event.target.id.startsWith("deleteMessage--")) {
+    const messageId = event.target.id.split("--")[1]
+    deleteMessage(messageId)
+  }
+})
+
 export const Message = messageObj => {
   const { id, message, userId, username, timestamp } = messageObj;
 
