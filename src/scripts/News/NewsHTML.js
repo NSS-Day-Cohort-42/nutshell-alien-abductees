@@ -9,7 +9,7 @@ export const newsHTML = (article) =>{
 <h3 class = "newsTitle">${article.title}</h3>
 <p>${new Date(article.timestamp).toLocaleDateString('en-US')}</p>
 <p class = "articleSynop">${article.synopsis}</p>
-<a href = "${article.url}">Link to article</a>
+<a href = "${article.url}" target = "_blank">Link to article</a>
 <button id="delArt--${article.id}">Delete</button>
 </div>
 `

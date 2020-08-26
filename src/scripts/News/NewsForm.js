@@ -30,10 +30,6 @@ if(clickEvent.target.id === "saveArticle"){
         userId: parseInt(sessionStorage.getItem("activeUser"))
 
     }
-    title.value = ""
-    synop.value = ""
-    url.value = ""
-    url.value = ""
     saveNews(newArticle)
     
 
