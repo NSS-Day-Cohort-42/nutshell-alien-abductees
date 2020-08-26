@@ -1,5 +1,5 @@
-export const Message = message => {
-  const { message, userId, username, timestamp } = message;
+export const Message = messageObj => {
+  const { message, userId, username, timestamp } = messageObj;
 
   return `
     <div class="message">

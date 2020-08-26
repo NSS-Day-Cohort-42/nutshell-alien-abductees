@@ -5,7 +5,7 @@ const eventHub = document.querySelector(".container")
 eventHub.addEventListener("click", event => {
   if(event.target.id === "saveMessage") {
     const messageData = {
-      message: document.querySelector("messageForm__message").value
+      message: document.querySelector(".messageForm__message").value
     }
 
     saveMessage(messageData)
