@@ -51,8 +51,8 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-export const deleteFriend = friendId => {
-    return fetch(`http://localhost:8088/friends/${friendId}`, {
+export const deleteFriend = (friend) => {
+    return fetch(`http://localhost:8088/friends/${friend.id}`, {
         method: "DELETE"
     })
         .then(getFriends)
