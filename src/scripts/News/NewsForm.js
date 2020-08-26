@@ -9,12 +9,19 @@ eventHub.addEventListener("createNewsStoryClicked", () => {
 
 export const NewsForm = () =>{
 contentTarget.innerHTML = `
-<form class= "newsForm">
-<input type = "text" id="newsTitle" placeholder = "Article Title" required>
-<textarea id="newsSynop" placeholder = "Article Synopsis" rows="3" cols="20" required></textarea>
-<input type = "text" id="newsUrl" placeholder = "Link" required>
-<button id= "saveArticle" type="button"> Post Article </button>
-</form>
+<section class = "noteForm">
+<h2>Post A News Article</h2>
+    <fieldset>
+        <input type = "text" id="newsTitle" placeholder = "Article Title" />
+    </fieldset>
+    <fieldset>
+        <textarea id="newsSynop" placeholder = "Article Synopsis" rows="3" cols="20"></textarea>
+    </fieldset>
+    <fieldset>
+        <input type = "text" id="newsUrl" placeholder = "Link" />
+    </fieldset>
+<button id= "saveArticle"> Post Article </button>
+</section>
 `
 }
 

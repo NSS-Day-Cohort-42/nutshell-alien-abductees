@@ -1,3 +1,6 @@
+//emily h
+//works with Event Data from database, all state change related functions are defined here
+
 let events = []
 
 

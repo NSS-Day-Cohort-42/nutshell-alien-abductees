@@ -1,3 +1,6 @@
+//emily h
+//combines data and html representation to render current nasville weather to the DOM
+
 import { weatherHTML } from "./Weather.js"
 import { getNasvilleWeather, useNashvilleWeather } from "./WeatherDataProvider.js"
 
