@@ -7,6 +7,11 @@ const contentTarget = document.querySelector(".chatContainer")
 
 let messages = []
 
+eventHub.addEventListener("messagesStateChanged", () => {
+  messages = useMessages()
+  render()
+})
+
 export const MessageList = () => {
   getMessages()
     .then(() => {
