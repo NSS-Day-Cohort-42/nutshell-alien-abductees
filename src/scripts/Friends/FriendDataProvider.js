@@ -8,4 +8,10 @@ export const getFriends = () => {
         .then(res => res.json())
         .then(parsedFriends => {
             friends = parsedFriends
-            )}
+        })
+
+}
+
+export const useFriends = () => {
+    return friends.slice()
+}
