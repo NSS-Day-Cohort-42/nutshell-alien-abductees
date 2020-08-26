@@ -1,5 +1,6 @@
 //Esther Sanders ... module to get and use friends from API, save new friend, and delete friend
 
+
 let friends = []
 
 const eventHub = document.querySelector(".container")
@@ -24,8 +25,6 @@ export const useFriends = () => {
 }
 
 export const saveFriend = (userId) => {
-    
-
     return fetch("http://localhost:8088/friends", {
         method: "POST",
         headers: {
@@ -36,17 +35,18 @@ export const saveFriend = (userId) => {
     .then(getFriends)
     .then(dispatchStateChangeEvent)
 
-    const newFriend = {
-        activeUserId: parseInt(sessionStorage.getItem("activeUser")),
-        userId: userId
-    }
+  
 }
 
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith === "addFriend--") {
         const [prompt, userId] = clickEvent.target.id("--")
+        const newFriend = {
+            activeUserId: parseInt(sessionStorage.getItem("activeUser")),
+            userId: userId
+        }
 
-        saveFriend(userId)
+        saveFriend(newFriend)
 
     }
 })
@@ -58,5 +58,4 @@ export const deleteFriend = friendId => {
         .then(getFriends)
         .then(dispatchStateChangeEvent)
 }
-
 
