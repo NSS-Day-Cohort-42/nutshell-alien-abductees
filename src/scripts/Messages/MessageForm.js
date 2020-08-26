@@ -5,10 +5,15 @@ const eventHub = document.querySelector(".container")
 eventHub.addEventListener("click", event => {
   if(event.target.id === "saveMessage") {
     const messageData = {
-      message: document.querySelector(".messageForm__message").value
+      message: document.querySelector(".messageForm__message").value.trim()
     }
 
-    saveMessage(messageData)
+    if(messageData.message) {
+      saveMessage(messageData)
+    }
+    else {
+      window.alert("You cannot submit an empty chat message.")
+    }
   }
 })
 
