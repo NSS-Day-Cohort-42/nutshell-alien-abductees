@@ -1,6 +1,8 @@
 .messageList {
   border: 1px solid black;
   padding: 0.5rem;
+  max-height: 250px;
+  overflow: scroll;
 }
 
 .message {

@@ -13,7 +13,12 @@ export const getMessages = () => {
     .then(messagesData => messages = messagesData)
 }
 
-export const useMessages = () => messages.slice()
+export const useMessages = () => {
+  return messages
+    .slice()
+    .sort((currentMessage, nextMessage) => currentMessage.timestamp - nextMessage.timestamp)
+}
+
 
 export const saveMessage = messageData => {
   const messageObj = {

@@ -27,4 +27,10 @@ const render = () => {
       ${ MessageForm() }
     </div>
   `
+  scrollToBottom()
+}
+
+const scrollToBottom = () => {
+  const messageList = document.querySelector(".messageList")
+  messageList.scrollTop = messageList.scrollHeight - messageList.clientHeight
 }
