@@ -18,8 +18,8 @@
     display: flex;
 }
 
-.eventDate > input, {
-    margin: 1rem;
+.eventDate > input {
+    margin: 0.25rem;
 }
 
 .eventDate > label, .eventLocation > label {
