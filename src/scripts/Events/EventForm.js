@@ -1,11 +1,11 @@
 import { saveEvents } from "./EventDataProvider.js"
 
-
-
-
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".formContainer")
 
+eventHub.addEventListener("createEventClicked", () => {
+    eventForm()
+})
 
 eventHub.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "saveEvent") {
@@ -26,13 +26,13 @@ eventHub.addEventListener("click", clickEvent => {
             userId: sessionStorage.getItem("activeUser")
         }
         saveEvents(newEvent)
+
+        contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
     }
 })
 
-
-
 export const eventForm = () => {
-    contentTarget.innerHTML += `
+    contentTarget.innerHTML = `
         <div class="eventForm">
             <h2 class="eventFormTitle"> Create New Event</h2>
                 <fieldset>
