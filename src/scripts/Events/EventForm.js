@@ -1,3 +1,6 @@
+//emily h
+//renders the form that allows users to create events
+
 import { saveEvents } from "./EventDataProvider.js"
 
 const eventHub = document.querySelector(".container")
@@ -39,11 +42,11 @@ export const eventForm = () => {
                     <label for="eventTitle">Event Title: </label>
                     <input id="eventTitle" type="text" placeholder="enter title of event...">
                 </fieldset>
-                <fieldset>
+                <fieldset class="eventDate">
                     <label for="eventDate">When is the event taking place?</label>
                     <input id="eventDate" type="date" name="eventDate">
                 </fieldset>
-                <fieldset>
+                <fieldset class="eventLocation">
                     <label for="eventLocation">Where is the event taking place?</label>
                     <input id="eventCity" type="text" placeholder="city">
                     <input id="eventState" type="text" placeholder="state postal code">

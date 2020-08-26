@@ -1,3 +1,6 @@
+//emily h
+//converts the event object in to html
+
 import { deleteEvent } from "./EventDataProvider.js"
 
 const eventHub = document.querySelector(".container")

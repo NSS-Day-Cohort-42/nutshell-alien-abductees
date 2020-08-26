@@ -5,5 +5,22 @@
 @import "./navBar.css";
 @import "./news.css";
 
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Play:wght@700&display=swap');
 
+h1 {
+    font-family: 'Play', sans-serif;  
+}
 
+.newsContainer, .eventsContainer, .tasksContainer {
+    border: 2px dotted black;
+}
+
+.bottomContent {
+    display: flex;
+    border: 2px dotted red;
+    justify-content: space-around;
+}
+
+.dashboard {
+    display: flex;
+}

@@ -1,4 +1,5 @@
-
+//emily h
+//converts weather object to html representation
 export const weatherHTML = (weather) => {
    return `  
             <div class="previewContent" id="previewWeather">
