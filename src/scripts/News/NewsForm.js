@@ -4,7 +4,7 @@ const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".formContainer")
 
 export const NewsForm = () =>{
-contentTarget.innerHTML = `
+contentTarget.innerHTML += `
 <section class = "noteForm">
 <input type = "text" id="newsTitle" placeholder = "Article Title" />
 <textarea id="newsSynop" placeholder = "Article Synopsis" rows="3" cols="20"></textarea>
