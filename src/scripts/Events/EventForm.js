@@ -23,7 +23,7 @@ eventHub.addEventListener("click", clickEvent => {
             city: eventCity,
             state: eventState,
             zip: eventZipCode,
-            //userId: //????
+            userId: sessionStorage.getItem("activeUser")
         }
         saveEvents(newEvent)
     }

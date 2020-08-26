@@ -1,5 +1,5 @@
-import { eventList } from "./Events/EventsList"
-import { eventForm } from "./Events/EventForm"
+import { eventList } from "./Events/EventsList.js"
+import { eventForm } from "./Events/EventForm.js"
 
 export const Nutshell = () => {
     // Render all your UI components here
