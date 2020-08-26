@@ -4,6 +4,7 @@ import { LoginForm } from "./auth/LoginForm.js"
 import { eventList } from "./Events/EventsList.js"
 import { eventForm } from "./Events/EventForm.js"
 
+const eventHub = document.querySelector(".container")
 
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -13,6 +14,12 @@ import { eventForm } from "./Events/EventForm.js"
         ensure that the Nutshell component gets rendered
 */
 
+eventHub.addEventListener("userAuthenticated", Nutshell) 
 
-eventList()
-eventForm()
+if(sessionStorage.getItem("activeUser")) {
+    Nutshell()
+}
+else {
+    LoginForm()
+    RegisterForm()
+}
