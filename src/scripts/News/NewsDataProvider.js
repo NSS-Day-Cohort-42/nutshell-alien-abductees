@@ -11,16 +11,17 @@ const dispatchStateChangeEvent = () =>{
     eventHub.dispatchEvent(newsStateChangeEvent)
 }
 
-eventHub.addEventListener("friendStateChanged", customEvent=>{
-    getNews()
-    .then(dispatchStateChangeEvent)
-})
+// eventHub.addEventListener("friendStateChanged", customEvent=>{
+//     getNews()
+//     .then(dispatchStateChangeEvent)
+// })
 
 
 export const getNews = () =>{
     return fetch(" http://localhost:8088/news")
     .then(res => res.json())
     .then(parseRes =>{
+        //filter news here to include only current user and friends?
         news = parseRes
     })
 }
@@ -44,3 +45,4 @@ export const deleteNews = (articleId) =>{
     .then(getNews)
     .then(dispatchStateChangeEvent)
 }
+
