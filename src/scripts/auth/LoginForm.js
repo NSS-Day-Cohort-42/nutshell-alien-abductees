@@ -21,6 +21,12 @@ eventHub.addEventListener("click", e => {
                         sessionStorage.setItem("activeUser", user.id)
                         eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
                     }
+                    else {
+                        renderLoginError()
+                    }
+                }
+                else {
+                    renderLoginError()
                 }
             })
     }
@@ -30,12 +36,17 @@ eventHub.addEventListener("click", e => {
 const render = () => {
     contentTarget.innerHTML += `
         <section class="login">
+            <h2 class="login__header">Login to an Existing Account</h2>
             <input id="login--username" type="text" placeholder="Enter your username">
             <input id="login--password" type="password" placeholder="Enter your password">
 
             <button id="login--button">Log In</button>
         </section>
     `
+}
+
+const renderLoginError = () => {
+    window.alert("The username and/or password provided does not match our records.")
 }
 
 export const LoginForm = () => {

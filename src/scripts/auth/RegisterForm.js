@@ -48,6 +48,9 @@ eventHub.addEventListener("click", e => {
                 }
             })
         }
+        else {
+            window.alert("All registration fields must be filled out and passwords must match!")
+        }
     }
 })
 
@@ -55,6 +58,7 @@ eventHub.addEventListener("click", e => {
 const render = () => {
     contentTarget.innerHTML += `
         <section class="register">
+            <h2 class="register__header">Register a New Account</h2>
             <input id="register--username" type="text" placeholder="Enter your username">
             <input id="register--email" type="text" placeholder="Enter your email address">
             <input id="register--password" type="password" placeholder="Enter your password">
