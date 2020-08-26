@@ -24,7 +24,7 @@ const getCustomEventNameFromButtonId = buttonId => {
     case "createNewsStory":
       return "createNewsStoryClicked"
 
-    case "addFriend":
+    case "addFriendByUsername":
       return "addFriendClicked"
 
     case "closeForm":
@@ -38,7 +38,7 @@ export const NavBar = () => {
       <button class="navBar__button" id="createTask">New Task</button>
       <button class="navBar__button" id="createEvent">New Event</button>
       <button class="navBar__button" id="createNewsStory">New News Story</button>
-      <button class="navBar__button" id="addFriend">Add a Friend</button>
+      <button class="navBar__button" id="addFriendByUsername">Add a Friend</button>
       <button class="navBar__button" id="closeForm">Close Form</button>
     </nav>
   `
