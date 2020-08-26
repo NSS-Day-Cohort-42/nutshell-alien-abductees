@@ -15,7 +15,7 @@ eventHub.addEventListener("click", event => {
 export const MessageForm = () => {
   return `
     <div class="messageForm">
-      <textarea class="messageForm__message"></textarea>
+      <textarea class="messageForm__message" placeholder="Enter a message"></textarea>
       <button id="saveMessage">Send Message</button>
     </div>
   `
