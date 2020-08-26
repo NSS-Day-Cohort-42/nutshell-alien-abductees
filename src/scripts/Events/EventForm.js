@@ -10,7 +10,7 @@ const contentTarget = document.querySelector(".formContainer")
 eventHub.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "saveEvent") {
         const eventTitle = document.querySelector("#eventTitle").value
-        const eventDate = document.querySelector("#eventDate").value
+        const eventDate = document.querySelector("#eventDate").value + "T00:00:00"
         const eventCity = document.querySelector("#eventCity").value
         const eventState = document.querySelector("#eventState").value
         const eventZipCode = document.querySelector("#eventZip").value
@@ -41,7 +41,7 @@ export const eventForm = () => {
                 </fieldset>
                 <fieldset>
                     <label for="eventDate">When is the event taking place?</label>
-                    <input id="eventDate" type="date" name="eventDate" id="eventDate">
+                    <input id="eventDate" type="date" name="eventDate">
                 </fieldset>
                 <fieldset>
                     <label for="eventLocation">Where is the event taking place?</label>
