@@ -1,5 +1,7 @@
-import settings from "../../Settings.js"
+//emily h
+//handles weather data from the external API
 
+import settings from "../../Settings.js"
 
 let weather = []
 let nashWeather = []
