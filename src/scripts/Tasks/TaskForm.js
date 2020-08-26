@@ -36,14 +36,14 @@ eventHub.addEventListener("click", clickEvent => {
 
             const newTask = {
                 task: taskName.value,
-                targetDate: taskTargetDate.value,
+                targetDate: taskTargetDate.value + "T00:00:00",
                 userId: parseInt(sessionStorage.getItem("activeUser"))
             }
             saveTask(newTask)
         } else {
             const editedTask = {
                 task: taskName.value,
-                targetDate: taskTargetDate.value,
+                targetDate: taskTargetDate.value + "T00:00:00",
                 id: parseInt(id.value)
             }
             editTask(editedTask)
