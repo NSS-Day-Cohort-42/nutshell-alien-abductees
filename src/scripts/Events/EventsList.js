@@ -13,7 +13,7 @@ const render = () => {
 
     const rep = events.map(event => {
         return eventsHTML(event)
-    })
+    }).join("")
     contentTarget.innerHTML = rep
 
 }
