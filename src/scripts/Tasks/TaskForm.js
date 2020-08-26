@@ -7,8 +7,15 @@ import {saveTask, editTask, useTasks } from "./TaskDataProvider.js"
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".formContainer")
 
+//listens for createTaskClicked event and renders self when heard
+eventHub.addEventListener("createTaskClicked", () => {
+    render()
+})
+
 //listens for edit button click Event
 eventHub.addEventListener("editClicked", customEvent => {
+    render()
+
     const allTasks = useTasks()
     const taskId = customEvent.detail.taskId
     const taskObjToEdit = allTasks.find(taskObj => taskId === taskObj.id)
@@ -49,6 +56,7 @@ eventHub.addEventListener("click", clickEvent => {
             editTask(editedTask)
             id.value = ""
         }
+        contentTarget.innerHTML = "" // wipe out formContainer after submit task
     } else {
         window.alert("Please complete all fields")
     }
@@ -57,7 +65,7 @@ eventHub.addEventListener("click", clickEvent => {
 
 
 const render = () => {
-    contentTarget.innerHTML += `
+    contentTarget.innerHTML = `
     <div class="taskForm">
         <h2 class="taskFormHeader"> Create New Task: </h2>
             <fieldset>
