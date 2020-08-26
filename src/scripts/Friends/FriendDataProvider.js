@@ -2,9 +2,16 @@
 
 let friends = []
 
+const eventHub = document.querySelector(".container")
+
+const dispatchStateChangeEvent = () => {
+    const friendStateChangedEvent = new CustomEvent("friendStateChanged")
+    eventHub.dispatchEvent(friendStateChangedEvent)
+}
+
 
 export const getFriends = () => {
-    return fetch("http://localhost:8088/tasks")
+    return fetch("http://localhost:8088/friends")
         .then(res => res.json())
         .then(parsedFriends => {
             friends = parsedFriends
@@ -15,3 +22,41 @@ export const getFriends = () => {
 export const useFriends = () => {
     return friends.slice()
 }
+
+export const saveFriend = (userId) => {
+    
+
+    return fetch("http://localhost:8088/friends", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: friendObj
+    })
+    .then(getFriends)
+    .then(dispatchStateChangeEvent)
+
+    const newFriend = {
+        activeUserId: parseInt(sessionStorage.getItem("activeUser")),
+        userId: userId
+    }
+}
+
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith === "addFriend--") {
+        const [prompt, userId] = clickEvent.target.id("--")
+
+        saveFriend(userId)
+
+    }
+})
+
+export const deleteFriend = friendId => {
+    return fetch(`http://localhost:8088/friends/${friendId}`, {
+        method: "DELETE"
+    })
+        .then(getFriends)
+        .then(dispatchStateChangeEvent)
+}
+
+
