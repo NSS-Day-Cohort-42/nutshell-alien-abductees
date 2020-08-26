@@ -1,5 +1,5 @@
-import {TaskForm} from "../scripts/Tasks/TaskForm.js"
-import {TaskList} from "../scripts/Tasks/TaskList.js"
+import {TaskForm} from "./Tasks/TaskForm.js"
+import {TaskList} from "./Tasks/TaskList.js"
 
 
 import { eventList } from "./Events/EventsList.js"

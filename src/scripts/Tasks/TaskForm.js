@@ -36,7 +36,8 @@ eventHub.addEventListener("click", clickEvent => {
 
             const newTask = {
                 task: taskName.value,
-                targetDate: taskTargetDate.value
+                targetDate: taskTargetDate.value,
+                userId: sessionStorage.getItem("activeUser")
             }
             saveTask(newTask)
         } else {
@@ -56,12 +57,18 @@ eventHub.addEventListener("click", clickEvent => {
 
 
 const render = () => {
-    contentTarget.innerHTML = `
+    contentTarget.innerHTML += `
     <div class="taskForm">
-        <input type="text" id="taskName">Task:
-        <label for="targetDate">Target Date: </label>
-        <input type ="date" name="targetDate" id="targetDate">  
-        <input type="hidden" name="taskId" id="taskId"> 
+        <h2 class="taskFormHeader"> Create New Task: </h2>
+            <fieldset>
+                <label for="taskName"> Task: </label>
+                <input type="text" id="taskName">
+            </fieldset>
+            <fieldset>
+                <label for="targetDate">Target Date: </label>
+                <input type ="date" name="targetDate" id="targetDate">  
+            </fieldset>
+            <input type="hidden" name="taskId" id="taskId"> 
         <button id="saveTask">Save Task</button>
     </div>
     `

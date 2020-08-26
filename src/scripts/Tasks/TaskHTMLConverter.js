@@ -6,9 +6,9 @@ export const TaskHTMLConverter = (taskObj) => {
             <p>Task: ${taskObj.task}</p>
             <p>Complete by: ${taskObj.targetDate}</p>
             <label for="complete">Completed?</label>
-            <input type="radio" id="complete">
-            <button id="editTask--${taskObj.id}">
-            <button id="deleteTask--${taskObj.id}">
+            <input type="radio" id="complete--${taskObj.id}">
+            <button id="editTask--${taskObj.id}">Edit Task</button>
+            <button id="deleteTask--${taskObj.id}">Delete Task</button>
         </div>
     `
 }

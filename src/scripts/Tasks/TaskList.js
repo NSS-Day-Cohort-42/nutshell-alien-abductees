@@ -44,3 +44,10 @@ eventHub.addEventListener("click", clickEvent => {
         deleteTask(id)
     }
 })
+
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("complete--")) {
+        const [promt, id] = clickEvent.target.id.split("--")
+        deleteTask(id)
+    }
+})
