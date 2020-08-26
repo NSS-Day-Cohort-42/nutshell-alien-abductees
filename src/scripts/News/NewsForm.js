@@ -5,7 +5,7 @@ const contentTarget = document.querySelector(".formContainer")
 
 export const NewsForm = () =>{
 contentTarget.innerHTML += `
-<section class = "noteForm">
+<section class = "newsForm">
 <input type = "text" id="newsTitle" placeholder = "Article Title" />
 <textarea id="newsSynop" placeholder = "Article Synopsis" rows="3" cols="20"></textarea>
 <input type = "text" id="newsUrl" placeholder = "Link" />
