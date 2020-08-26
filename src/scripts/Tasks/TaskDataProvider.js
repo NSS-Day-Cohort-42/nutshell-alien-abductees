@@ -40,7 +40,7 @@ export const editTask = (taskObj) => {
 }
 
 export const deleteTask = taskId => {
-    return fetch(`http://localhost:8088/notes/${noteId}`, {
+    return fetch(`http://localhost:8088/tasks/${taskId}`, {
         method: "DELETE"
     })
     //don't need response => on delete operation
