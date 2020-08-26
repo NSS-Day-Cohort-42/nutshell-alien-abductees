@@ -15,9 +15,9 @@ export const getMessages = () => {
 
 export const useMessages = () => messages.slice()
 
-export const saveMessage = message => {
+export const saveMessage = messageData => {
   const messageObj = {
-    message: message,
+    message: messageData.message,
     timestamp: Date.now(),
     userId: parseInt(sessionStorage.getItem("activeUser"))
   }
