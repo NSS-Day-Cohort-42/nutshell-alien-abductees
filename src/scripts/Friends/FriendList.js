@@ -44,7 +44,7 @@ eventHub.addEventListener("click", clickEvent => {
         getFriends()
             .then(() => {
                 const friends = useFriends()
-                const matchingFriend = friends.find(friend => friend.userId === userId)
+                const matchingFriend = friends.find(friend => friend.userId === parseInt(userId) && friend.activeUserId === parseInt(sessionStorage.getItem("activeUser")))
                 deleteFriend(matchingFriend)
             })
         
