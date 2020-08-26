@@ -7,6 +7,11 @@ import {saveTask, editTask, useTasks } from "./TaskDataProvider.js"
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".formContainer")
 
+//listens for createTaskClicked event and renders self when heard
+eventHub.addEventListener("createTaskClicked", () => {
+    render()
+})
+
 //listens for edit button click Event
 eventHub.addEventListener("editClicked", customEvent => {
     const allTasks = useTasks()
@@ -57,7 +62,7 @@ eventHub.addEventListener("click", clickEvent => {
 
 
 const render = () => {
-    contentTarget.innerHTML += `
+    contentTarget.innerHTML = `
     <div class="taskForm">
         <h2 class="taskFormHeader"> Create New Task: </h2>
             <fieldset>
