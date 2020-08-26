@@ -9,12 +9,12 @@ eventHub.addEventListener("createNewsStoryClicked", () => {
 
 export const NewsForm = () =>{
 contentTarget.innerHTML = `
-<section class = "noteForm">
-<input type = "text" id="newsTitle" placeholder = "Article Title" />
-<textarea id="newsSynop" placeholder = "Article Synopsis" rows="3" cols="20"></textarea>
-<input type = "text" id="newsUrl" placeholder = "Link" />
-<button id= "saveArticle"> Post Article </button>
-</section>
+<form class= "newsForm">
+<input type = "text" id="newsTitle" placeholder = "Article Title" required>
+<textarea id="newsSynop" placeholder = "Article Synopsis" rows="3" cols="20" required></textarea>
+<input type = "text" id="newsUrl" placeholder = "Link" required>
+<button id= "saveArticle" type="button"> Post Article </button>
+</form>
 `
 }
 
@@ -25,17 +25,22 @@ if(clickEvent.target.id === "saveArticle"){
     const synop = document.querySelector("#newsSynop")
     const url = document.querySelector("#newsUrl")
     const currentDate = date.getTime()
-
-    const newArticle = {
-        title: title.value,
-        synopsis: synop.value,
-        url: url.value,
-        timestamp: currentDate,
-        userId: parseInt(sessionStorage.getItem("activeUser"))
-
-    }
-    saveNews(newArticle)
+    if(title.value && synop.value && url.value){
+        const newArticle = {
+            title: title.value,
+            synopsis: synop.value,
+            url: url.value,
+            timestamp: currentDate,
+            userId: parseInt(sessionStorage.getItem("activeUser"))
     
-    contentTarget.innerHTML = ""
-}
+        }
+        saveNews(newArticle)
+        
+        contentTarget.innerHTML = ""
+        }else{
+            window.alert("Please complete all fields")
+    }
+    }
+
+   
 })
