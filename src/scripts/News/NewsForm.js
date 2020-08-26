@@ -32,17 +32,22 @@ if(clickEvent.target.id === "saveArticle"){
     const synop = document.querySelector("#newsSynop")
     const url = document.querySelector("#newsUrl")
     const currentDate = date.getTime()
-
-    const newArticle = {
-        title: title.value,
-        synopsis: synop.value,
-        url: url.value,
-        timestamp: currentDate,
-        userId: parseInt(sessionStorage.getItem("activeUser"))
-
-    }
-    saveNews(newArticle)
+    if(title.value && synop.value && url.value){
+        const newArticle = {
+            title: title.value,
+            synopsis: synop.value,
+            url: url.value,
+            timestamp: currentDate,
+            userId: parseInt(sessionStorage.getItem("activeUser"))
     
-    contentTarget.innerHTML = ""
-}
+        }
+        saveNews(newArticle)
+        
+        contentTarget.innerHTML = ""
+        }else{
+            window.alert("Please complete all fields")
+    }
+    }
+
+   
 })
