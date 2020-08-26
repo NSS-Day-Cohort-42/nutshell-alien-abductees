@@ -36,6 +36,7 @@ eventHub.addEventListener("click", e => {
 const render = () => {
     contentTarget.innerHTML += `
         <section class="login">
+            <h2 class="login__header">Login to an Existing Account</h2>
             <input id="login--username" type="text" placeholder="Enter your username">
             <input id="login--password" type="password" placeholder="Enter your password">
 
