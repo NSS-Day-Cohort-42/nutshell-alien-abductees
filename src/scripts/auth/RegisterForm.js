@@ -48,6 +48,9 @@ eventHub.addEventListener("click", e => {
                 }
             })
         }
+        else {
+            window.alert("All registration fields must be filled out and passwords must match!")
+        }
     }
 })
 
