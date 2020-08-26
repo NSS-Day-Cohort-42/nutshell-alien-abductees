@@ -38,18 +38,6 @@ export const saveFriend = (userId) => {
   
 }
 
-eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id.startsWith === "addFriend--") {
-        const [prompt, userId] = clickEvent.target.id("--")
-        const newFriend = {
-            activeUserId: parseInt(sessionStorage.getItem("activeUser")),
-            userId: userId
-        }
-
-        saveFriend(newFriend)
-
-    }
-})
 
 export const deleteFriend = (friend) => {
     return fetch(`http://localhost:8088/friends/${friend.id}`, {
