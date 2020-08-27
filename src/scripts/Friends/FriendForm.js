@@ -23,6 +23,8 @@ eventHub.addEventListener("click", clickEvent => {
 
                 if (relatedUser !== undefined) {
                     saveFriend(parseInt(relatedUser.id))
+
+                    contentTarget.innerHTML = ""
                 }
                 else {
                     window.alert("No user exists with that name")
