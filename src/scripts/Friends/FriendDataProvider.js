@@ -25,22 +25,26 @@ export const useFriends = () => {
 }
 
 export const saveFriend = (userId) => {
-    const friendObj = {
-        userId: parseInt(userId),
-        activeUserId: parseInt(sessionStorage.getItem("activeUser"))
+    userId = parseInt(userId)
+    const activeUserId = parseInt(sessionStorage.getItem("activeUser"))
+
+    // only save a new friend if there doesn't already exist a friend object between this activeUser and the userId supplied as an argument
+    if(!friends.some(friend => friend.userId === userId && friend.activeUserId === activeUserId)) {
+        const friendObj = {
+            userId: userId,
+            activeUserId: activeUserId
+        }
+
+        fetch("http://localhost:8088/friends", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(friendObj)
+        })
+        .then(getFriends)
+        .then(dispatchStateChangeEvent)
     }
-
-    return fetch("http://localhost:8088/friends", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(friendObj)
-    })
-    .then(getFriends)
-    .then(dispatchStateChangeEvent)
-
-  
 }
 
 
