@@ -25,7 +25,7 @@ eventHub.addEventListener("editClicked", customEvent => {
     let id = document.querySelector("#taskId")
 
     taskName.value = taskObjToEdit.task
-    taskTargetDate.value = taskObjToEdit.targetDate
+    taskTargetDate.value = taskObjToEdit.targetDate.split("T")[0]
     id.value = parseInt(taskId)
 })
 
