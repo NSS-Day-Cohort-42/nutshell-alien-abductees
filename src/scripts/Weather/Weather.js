@@ -12,7 +12,7 @@ export const weatherHTML = (weather) => {
             `
         }
 
-export const weatherEventsHTML = (weather) => {
+/*export const weatherEventsHTML = (weather) => {
     return `
         <div class="previewContent" id="previewWeather">
             <div class="weather--${weather.list[0].dt}">
@@ -24,4 +24,6 @@ export const weatherEventsHTML = (weather) => {
         </div>
     
     `
-}
+} */
+
+

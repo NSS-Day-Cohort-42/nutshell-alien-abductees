@@ -8,6 +8,7 @@ import { getNasvilleWeather, useNashvilleWeather } from "./WeatherDataProvider.j
 
 //const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".currentWeatherContainer")
+const contentElement = document.querySelector(".eventWeather")
 
 export const weatherList = () => {
  render()
@@ -23,3 +24,6 @@ const render = () => {
         })
 
 }
+
+//-------------------
+

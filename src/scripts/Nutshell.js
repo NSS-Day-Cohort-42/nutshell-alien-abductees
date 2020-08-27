@@ -10,9 +10,7 @@ import "./News/NewsForm.js"
 
 export const Nutshell = () => {
     weatherList()
-
     NavBar();
-
     MessageList()
     TaskList()
     eventList()
