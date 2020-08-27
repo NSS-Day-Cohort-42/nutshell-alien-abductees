@@ -25,12 +25,17 @@ export const useFriends = () => {
 }
 
 export const saveFriend = (userId) => {
+    const friendObj = {
+        userId: parseInt(userId),
+        activeUserId: parseInt(sessionStorage.getItem("activeUser"))
+    }
+
     return fetch("http://localhost:8088/friends", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: friendObj
+        body: JSON.stringify(friendObj)
     })
     .then(getFriends)
     .then(dispatchStateChangeEvent)
