@@ -24,7 +24,7 @@ eventHub.addEventListener("click", clickEvent => {
             city: eventCity,
             state: eventState,
             zip: eventZipCode,
-            userId: sessionStorage.getItem("activeUser")
+            userId: parseInt(sessionStorage.getItem("activeUser"))
         }
         saveEvents(newEvent)
         contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
