@@ -70,7 +70,24 @@ export const patchTask = (taskObj) => {
     return fetch(`http://localhost:8088/tasks/${taskObj.id}`, {
         method: "PATCH",
         headers: {
-            "Content-Type": application/json
+            "Content-Type": "application/json"
+        },
+        body: taskObj
+    })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent)
+}
+
+
+export const patchTask = (taskId) => {
+    const taskObj = {
+        complete: true
+    }
+
+    return fetch(`http://localhost:8088/tasks`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
         },
         body: taskObj
     })
