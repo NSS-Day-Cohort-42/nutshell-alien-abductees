@@ -14,7 +14,7 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-export const eventsHTML = (eventObj, weatherObj) => {
+export const eventsHTML = (eventObj) => {
     return `
     <div class="event--${eventObj.id}">
         <div class="eventTitle">${eventObj.name}</div>
