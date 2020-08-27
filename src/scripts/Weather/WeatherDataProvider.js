@@ -34,7 +34,16 @@ export const getNasvilleWeather = () => {
     })
 }
 
+
+
+
+/*
+
+currently in EventsList.js
+
 eventHub.addEventListener("createdEvent", (locationEntered) => {
     const locationZip = locationEntered.detail.location
     getEventWeather(locationZip) //.then(weatherEventList???)
         })
+        
+*/
