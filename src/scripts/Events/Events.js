@@ -23,7 +23,7 @@ export const eventsHTML = (eventObj, weatherObj) => {
         <button id="eventWeather--${eventObj.id}">Show Weather</button>
         <button id="deleteEvent--${eventObj.id}">Delete Event</button>
       <dialog id="weather--${eventObj.id}">
-      <button id="hideWeather--${eventObj.id}">Hide</button>
+      
       </dialog>
     </div>
         `

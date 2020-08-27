@@ -24,6 +24,7 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
                 const theDialog = document.querySelector(`#weather--${eventId}`)
                 const rep = `
                 <div class="weather--${weatherObj.dt}">
+                <button id="hideWeather--${eventId}">Hide</button>
                 <h4>forecast:</h4>
                 <img class="weatherIcon" src="./images/WeatherIcons/${weatherObj.weather[0].icon}.png" alt="Weather description icon">
                 <div class="weatherDetail">${weatherObj.weather[0].description}</div>
@@ -31,11 +32,13 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
                 <div class="weatherDetail">low of ${Math.floor(weatherObj.main.temp_min)}°F</div>
                 </div> 
             `
-                 theDialog.innerHTML += rep 
+                 theDialog.innerHTML = rep 
                  return theDialog.showModal()
         } else {
             const theDialog = document.querySelector(`#weather--${eventId}`)
-            theDialog.innerHTML += `Weather Data not available`
+            theDialog.innerHTML = `
+            <button id="hideWeather--${eventId}">Hide</button>
+            Weather Data not available`
             return theDialog.showModal()
         }
         })
