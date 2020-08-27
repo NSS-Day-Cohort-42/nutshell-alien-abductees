@@ -7,8 +7,16 @@ const contentTarget = document.querySelector(".chatContainer")
 
 let messages = []
 
+let editingMessageId = null
+
 eventHub.addEventListener("messagesStateChanged", () => {
   messages = useMessages()
+  render()
+})
+
+eventHub.addEventListener("editMessageButtonClicked", event => {
+  const messageId = parseInt(event.detail.messageId)
+  editingMessageId = messageId
   render()
 })
 
@@ -23,7 +31,12 @@ export const MessageList = () => {
 const render = () => {
   contentTarget.innerHTML = `
     <div class="messageList">
-      ${ messages.map(message => Message(message)).join("") }
+      ${ messages.map(message => {
+        if(message.id === editingMessageId) {
+          return MessageForm(message)
+        }
+        return Message(message)
+      }).join("") }
       ${ MessageForm() }
     </div>
   `
