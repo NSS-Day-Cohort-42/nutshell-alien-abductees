@@ -32,10 +32,8 @@ eventHub.addEventListener("click", event => {
 
   else if(prefix === "addFriend") {
     saveFriend(id)
-      .then(() => {
-        const dialogNode = document.querySelector(`#addFriendDialog--${id}`)
-        dialogNode.close()
-      })
+    const dialogNode = document.querySelector(`#addFriendDialog--${id}`)
+    dialogNode.close()
   }
 })
 
