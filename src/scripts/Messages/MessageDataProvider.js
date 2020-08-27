@@ -7,6 +7,11 @@ const broadcastMessagesStateChanged = () => {
   eventHub.dispatchEvent(messagesStateChangedEvent)
 }
 
+const broadcastMessageEditFinished = () => {
+  const messageEditFinishedEvent = new CustomEvent("messageEditFinished")
+  eventHub.dispatchEvent(messageEditFinishedEvent)
+}
+
 export const getMessages = () => {
   return fetch("http://localhost:8088/messages?_expand=user")
     .then(res => res.json())
@@ -18,7 +23,6 @@ export const useMessages = () => {
     .slice()
     .sort((currentMessage, nextMessage) => currentMessage.timestamp - nextMessage.timestamp)
 }
-
 
 export const saveMessage = messageData => {
   const messageObj = {
@@ -35,6 +39,21 @@ export const saveMessage = messageData => {
     body: JSON.stringify(messageObj)
   })
     .then(getMessages)
+    .then(broadcastMessagesStateChanged)
+}
+
+export const updateMessage = messageObj => {
+  const id = messageObj.id
+
+  return fetch(`http://localhost:8088/messages/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(messageObj)
+  })
+    .then(getMessages)
+    .then(broadcastMessageEditFinished)
     .then(broadcastMessagesStateChanged)
 }
 

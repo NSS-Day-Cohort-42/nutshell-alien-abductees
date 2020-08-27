@@ -14,6 +14,11 @@ eventHub.addEventListener("messagesStateChanged", () => {
   render()
 })
 
+eventHub.addEventListener("messageEditFinished", () => {
+  editingMessageId = null
+  render()
+})
+
 eventHub.addEventListener("editMessageButtonClicked", event => {
   const messageId = parseInt(event.detail.messageId)
   editingMessageId = messageId
