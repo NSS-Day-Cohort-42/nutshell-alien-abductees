@@ -25,7 +25,7 @@ const render = (arrOfFriends) => {
         .then(() => {
             const arrOfUsers = useUsers()
             const FriendsHTMLList = arrOfFriends.map(relObj => {
-                let relatedUsers = arrOfUsers.filter(user => relObj.userId === user.id)
+                let relatedUsers = arrOfUsers.filter(user => parseInt(relObj.userId) === user.id && relObj.activeUserId === parseInt(sessionStorage.getItem("activeUser")))
                 return FriendsHTMLConverter(relatedUsers)
 
             }).join("")
