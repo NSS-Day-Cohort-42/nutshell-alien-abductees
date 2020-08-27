@@ -15,7 +15,6 @@ export const Nutshell = () => {
     FriendList()
 
     NavBar();
-
     MessageList()
     TaskList()
     eventList()
