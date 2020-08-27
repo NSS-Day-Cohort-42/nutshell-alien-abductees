@@ -2,6 +2,7 @@ import { saveMessage, updateMessage } from "./MessageDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 
+// handle user clicking on the saveMessage button, either save a new message or update an existing message
 eventHub.addEventListener("click", event => {
   if(event.target.id.startsWith("saveMessage")) {
 
@@ -20,6 +21,7 @@ eventHub.addEventListener("click", event => {
   }
 })
 
+// return the HTML for a form with optional default values set in messageObj param
 export const MessageForm = messageObj => {
   const defaultMessageValue = messageObj ? messageObj.message : ""
   const idValue = messageObj ? messageObj.id : ""
@@ -27,13 +29,14 @@ export const MessageForm = messageObj => {
   return `
     <div class="messageForm">
       <textarea class="messageForm__message" id="messageForm__message--${idValue}" placeholder="Enter a message">${defaultMessageValue}</textarea>
-      ${ hiddenInputs(messageObj) }
+      ${ hiddenInputsHTML(messageObj) }
       <button id="saveMessage--${idValue}">${idValue ? "Update" : "Send"} Message</button>
     </div>
   `
 }
 
-const hiddenInputs = messageObj => {
+// return the HTML for hidden inputs, storing the message id, userId of the user who wrote the message, and timestamp of the message (necessary for edit form)
+const hiddenInputsHTML = messageObj => {
   if(!messageObj || !messageObj.id) {
     return ""
   }
@@ -46,11 +49,11 @@ const hiddenInputs = messageObj => {
   `
 }
 
+// create a message object from the values in the form. if this is a brand new message, we only need the message text, but if editing we also need to grab the hidden input values
 const createMessageObjectFromFormValues = (id = "") => {
   const messageObj = {}
   messageObj.message = document.querySelector(`#messageForm__message--${id}`).value.trim()
 
-  // if id is set, we are editing an existing message... attach hidden input values to it too
   if(id) {
     messageObj.id = parseInt(id)
     messageObj.userId = parseInt(document.querySelector(`#messageForm__userId--${id}`).value)
@@ -60,6 +63,7 @@ const createMessageObjectFromFormValues = (id = "") => {
   return messageObj
 }
 
+// validate a message - if invalid do an error alert and return false. otherwise return true
 const validateMessage = messageObj => {
   if(!messageObj.message) {
     window.alert("You cannot submit an empty chat message.")

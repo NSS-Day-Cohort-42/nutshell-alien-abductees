@@ -2,6 +2,7 @@ import { deleteMessage } from "./MessageDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 
+// handle a click event on the message card... can be the message delete button, edit button, or can represent the user opening an add friend <dialog> and clicking yes/cancel in that dialog
 eventHub.addEventListener("click", event => {
   const [ prefix, id ] = event.target.id.split("--")
 
@@ -46,7 +47,7 @@ export const Message = messageObj => {
         <button class="message__username" id="openAddFriendDialog--${userId}" ${isActiveUser ? "disabled" : ""}>${user.username}:</button>
         <p class="message__text">${message}</p>
       </div>
-      ${ messageActionButtons(id, isActiveUser) }
+      ${ messageActionButtonsHTML(id, isActiveUser) }
 
       <dialog class="dialog friend-dialog" id="addFriendDialog--${userId}">
         <p class="friend-dialog__prompt">Would you like to add ${user.username} as a friend?</p>
@@ -60,7 +61,7 @@ export const Message = messageObj => {
 /**
  * If the given userId matches the userId of the activeUser, then return a div containing buttons that will allow them to manipulate their message (delete it or edit it)
  */
-const messageActionButtons = (messageId, isActiveUser) => {
+const messageActionButtonsHTML = (messageId, isActiveUser) => {
   if(isActiveUser) {
     return `
       <div class="message__actionButtonsWrapper">
