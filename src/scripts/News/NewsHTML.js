@@ -10,7 +10,7 @@ export const newsHTML = (article) =>{
 <p>${new Date(article.timestamp).toLocaleDateString('en-US')}</p>
 <p class = "articleSynop">${article.synopsis}</p>
 <a href = "${article.url}" target = "_blank">Link to article</a>
-<button id="delArt--${article.id}">Delete</button>
+${parseInt(sessionStorage.getItem("activeUser")) === article.userId ? `<button id="delArt--${article.id}">Delete</button>`: "" }
 </div>
 `
 }
@@ -21,4 +21,5 @@ eventHub.addEventListener("click", clickEvent =>{
         deleteNews(selectedArticle)
     }
 })
+
 
