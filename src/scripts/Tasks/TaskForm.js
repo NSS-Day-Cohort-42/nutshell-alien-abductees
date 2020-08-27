@@ -25,7 +25,7 @@ eventHub.addEventListener("editClicked", customEvent => {
     let id = document.querySelector("#taskId")
 
     taskName.value = taskObjToEdit.task
-    taskTargetDate = taskObjToEdit.targetDate
+    taskTargetDate.value = taskObjToEdit.targetDate.split("T")[0]
     id.value = parseInt(taskId)
 })
 
@@ -44,14 +44,17 @@ eventHub.addEventListener("click", clickEvent => {
             const newTask = {
                 task: taskName.value,
                 targetDate: taskTargetDate.value + "T00:00:00",
-                userId: parseInt(sessionStorage.getItem("activeUser"))
+                userId: parseInt(sessionStorage.getItem("activeUser")),
+                complete: false
             }
             saveTask(newTask)
         } else {
             const editedTask = {
                 task: taskName.value,
                 targetDate: taskTargetDate.value + "T00:00:00",
-                id: parseInt(id.value)
+                userId: parseInt(sessionStorage.getItem("activeUser")),
+                id: parseInt(id.value),
+                complete: false
             }
             editTask(editedTask)
             id.value = ""

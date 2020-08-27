@@ -1,7 +1,7 @@
 //Esther Sanders ... renders all tasks, listens for taskStateChanged event and re-renders as a user creates new tasks, edits, deletes, or completes tasks
 
-import {getTasks, useTasks, deleteTask} from "./TaskDataProvider.js"
-import { TaskHTMLConverter } from "./TaskHTMLConverter.js"
+import { getTasks, useTasks, deleteTask, saveTask, patchTask } from "./TaskDataProvider.js"
+import { TaskHTMLConverter, CompletedTaskHTMLConverter } from "./TaskHTMLConverter.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".tasksContainer")
@@ -14,10 +14,34 @@ eventHub.addEventListener("taskStateChanged", customEvent => {
 })
 
 const render = (tasks) => {
-    contentTarget.innerHTML = tasks.map(
+    const completedTasks = tasks.map(
         (taskObj) => {
-            return TaskHTMLConverter(taskObj)
-        }).join("")       
+            if (taskObj.complete) {
+                return CompletedTaskHTMLConverter(taskObj)
+            }
+
+        }).join("")
+
+
+    const incompleteTasks = tasks.map(
+        (taskObj) => {
+            if (taskObj.complete === false) {
+                return TaskHTMLConverter(taskObj)
+            }
+        }).join("")
+
+
+    contentTarget.innerHTML = `
+    <div class="incompleteTasks">
+    <h3>To do: </h3>
+    ${incompleteTasks}
+    </div>
+    <div class="completedTasks">
+    <h3>Completed Tasks: </h3>
+    ${completedTasks}
+    </div>
+    `
+
 }
 
 export const TaskList = () => {
@@ -48,6 +72,7 @@ eventHub.addEventListener("click", clickEvent => {
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("complete--")) {
         const [promt, id] = clickEvent.target.id.split("--")
-        deleteTask(id)
+        patchTask(parseInt(id))
     }
+
 })
