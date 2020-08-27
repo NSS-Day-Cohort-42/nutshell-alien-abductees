@@ -1,7 +1,7 @@
 //Esther Sanders ... renders all tasks, listens for taskStateChanged event and re-renders as a user creates new tasks, edits, deletes, or completes tasks
 
 import { getTasks, useTasks, deleteTask, saveTask, patchTask } from "./TaskDataProvider.js"
-import { TaskHTMLConverter } from "./TaskHTMLConverter.js"
+import { TaskHTMLConverter, CompletedTaskHTMLConverter } from "./TaskHTMLConverter.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".tasksContainer")
@@ -17,7 +17,7 @@ const render = (tasks) => {
     const completedTasks = tasks.map(
         (taskObj) => {
             if (taskObj.complete) {
-                return TaskHTMLConverter(taskObj)
+                return CompletedTaskHTMLConverter(taskObj)
             }
 
         }).join("")

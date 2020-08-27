@@ -73,7 +73,7 @@ export const patchTask = (taskId) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: completedTask
+        body: JSON.stringify(completedTask)
     })
     .then(getTasks)
     .then(dispatchStateChangeEvent)

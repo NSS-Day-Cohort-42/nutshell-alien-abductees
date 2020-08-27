@@ -12,3 +12,13 @@ export const TaskHTMLConverter = (taskObj) => {
         </div>
     `
 }
+
+export const CompletedTaskHTMLConverter = (taskObj) => {
+    return `
+        <div class="taskCard--${taskObj.id}" id="completedTask">
+            <p>Task: ${taskObj.task}</p>
+            <button id="deleteTask--${taskObj.id}">Delete Task</button>
+        </div>
+    `
+
+}
