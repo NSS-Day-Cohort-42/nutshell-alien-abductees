@@ -31,21 +31,21 @@ eventHub.addEventListener("click", (clickEvent) => {
     })
 
 export const eventsHTML = (eventObj) => {
+ 
     return `
     <div class="event--${eventObj.id}">
         <div class="eventTitle">${eventObj.name}</div>
         <div class="eventDate">${new Date(eventObj.date).toLocaleDateString('en-US')}</div>
         <div class="eventLocation">${eventObj.city}, ${eventObj.state}</div>
-        <button id="eventWeather--${eventObj.id}">Show Weather</button>
-        <button id="deleteEvent--${eventObj.id}">Delete Event</button>
-      <dialog id="weather--${eventObj.id}">
-      
-      </dialog>
-    </div>
+        ${parseInt(sessionStorage.getItem("activeUser")) === eventObj.userId ? `<button id="deleteEvent--${eventObj.id}">Delete</button>`: "" }
+        <dialog id="weather--${eventObj.id}">
+        
+        </dialog>
+        </div>
         `
-}
+      }
 
-
+      
 
 
 
