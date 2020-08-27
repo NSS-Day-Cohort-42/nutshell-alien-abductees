@@ -1,4 +1,5 @@
 import { deleteMessage } from "./MessageDataProvider.js"
+import { saveFriend } from "../Friends/FriendDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 
@@ -30,9 +31,11 @@ eventHub.addEventListener("click", event => {
   }
 
   else if(prefix === "addFriend") {
-    // saveFriend(id) // will eventually be written in FriendProvider and will save the friend with the given ID as a friend of the currently logged in user
-    const dialogNode = document.querySelector(`#addFriendDialog--${id}`)
-    dialogNode.close()
+    saveFriend(id)
+      .then(() => {
+        const dialogNode = document.querySelector(`#addFriendDialog--${id}`)
+        dialogNode.close()
+      })
   }
 })
 

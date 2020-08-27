@@ -7,6 +7,7 @@ import { NewsList } from "./News/NewsList.js"
 import "./Tasks/TaskForm.js"
 import "./Events/EventForm.js"
 import "./News/NewsForm.js"
+import "./Friends/FriendForm.js"
 import { FriendList } from "./Friends/FriendList.js"
 
 export const Nutshell = () => {
