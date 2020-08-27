@@ -22,7 +22,8 @@ export const eventsHTML = (eventObj, weatherObj) => {
         <div class="eventLocation">${eventObj.city}, ${eventObj.state}</div>
         <button id="eventWeather--${eventObj.id}">Show Weather</button>
         <button id="deleteEvent--${eventObj.id}">Delete Event</button>
-      <dialog id="test--${eventObj.id}">
+      <dialog id="weather--${eventObj.id}">
+      <button id="hideWeather--${eventObj.id}">Hide</button>
       </dialog>
     </div>
         `
@@ -41,7 +42,7 @@ export const showEventWeather = () => {
       eventHub.dispatchEvent(customEvent) 
       } else if (clickEvent.target.id.startsWith("hideWeather--")) {
         const [prefix, id] = clickEvent.target.id.split("--")
-        const contentTarget = document.querySelector(`#test--${id}`)
+        const contentTarget = document.querySelector(`#weather--${id}`)
         contentTarget.close()
       }
     })

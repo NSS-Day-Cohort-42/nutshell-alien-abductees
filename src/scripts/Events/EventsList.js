@@ -17,10 +17,11 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
     getEventWeather(matchedEvent.zip)
         .then(() => {
             const weather = useEventWeather()
-            const eventDT = new Date(matchedEvent.date).getTime()/1000
+            const eventSplitDT = matchedEvent.date.split("T")[0]
+            const eventDT = new Date(eventSplitDT).getTime()/1000
              if(eventDT > weather.list[0].dt && eventDT < weather.list[weather.list.length-1].dt){
                 const weatherObj = weather.list.find(listItem => listItem.dt === eventDT)
-                const theDialog = document.querySelector(`#test--${eventId}`)
+                const theDialog = document.querySelector(`#weather--${eventId}`)
                 const rep = `
                 <div class="weather--${weatherObj.dt}">
                 <img class="weatherIcon" src="./images/WeatherIcons/${weatherObj.weather[0].icon}.png" alt="Weather description icon">
@@ -29,10 +30,12 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
                 <div class="weatherDetail">low of ${Math.floor(weatherObj.main.temp_min)}°F</div>
                 </div> 
             `
-                 theDialog.innerHTML = rep 
+                 theDialog.innerHTML += rep 
                  return theDialog.showModal()
         } else {
-            return contentTarget.innerHTML = `Weather Data not Available`
+            const theDialog = document.querySelector(`#weather--${eventId}`)
+            theDialog.innerHTML += `Weather Data not available`
+            return theDialog.showModal()
         }
         })
         })
