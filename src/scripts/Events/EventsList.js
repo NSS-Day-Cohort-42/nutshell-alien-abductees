@@ -3,7 +3,7 @@
 
 import { getEvents, useEvents } from "./EventDataProvider.js"
 import {eventsHTML, showEventWeather} from "./Events.js"
-//import { getEventWeather, useEventWeather } from "../Weather/WeatherDataProvider.js"
+import "../Weather/WeatherDataProvider.js"
 
 
 const contentTarget = document.querySelector(".eventsContainer")
@@ -13,7 +13,8 @@ const eventHub = document.querySelector(".container")
 
 const render = () => {
     const events = useEvents()
-    //const weather = useEventWeather()
+    const weather = useEventWeather()
+    debugger
             
         const rep = events.map(event => {
                 return eventsHTML(event)
