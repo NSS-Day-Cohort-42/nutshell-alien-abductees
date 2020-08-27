@@ -2,14 +2,13 @@ let messages = []
 
 const eventHub = document.querySelector(".container")
 
-const broadcastMessagesStateChanged = () => {
-  const messagesStateChangedEvent = new CustomEvent("messagesStateChanged")
+const broadcastMessagesStateChanged = stateChangeDescription => {
+  const messagesStateChangedEvent = new CustomEvent("messagesStateChanged", {
+    detail: {
+      stateChangeDescription: stateChangeDescription
+    }
+  })
   eventHub.dispatchEvent(messagesStateChangedEvent)
-}
-
-const broadcastMessageEditFinished = () => {
-  const messageEditFinishedEvent = new CustomEvent("messageEditFinished")
-  eventHub.dispatchEvent(messageEditFinishedEvent)
 }
 
 export const getMessages = () => {
@@ -39,7 +38,7 @@ export const saveMessage = messageData => {
     body: JSON.stringify(messageObj)
   })
     .then(getMessages)
-    .then(broadcastMessagesStateChanged)
+    .then(() => broadcastMessagesStateChanged("newMessage"))
 }
 
 export const updateMessage = messageObj => {
@@ -53,8 +52,7 @@ export const updateMessage = messageObj => {
     body: JSON.stringify(messageObj)
   })
     .then(getMessages)
-    .then(broadcastMessageEditFinished)
-    .then(broadcastMessagesStateChanged)
+    .then(() => broadcastMessagesStateChanged("editedMessage"))
 }
 
 export const deleteMessage = messageId => {
@@ -62,5 +60,5 @@ export const deleteMessage = messageId => {
     method: "DELETE"
   })
     .then(getMessages)
-    .then(broadcastMessagesStateChanged)
+    .then(() => broadcastMessagesStateChanged("deletedMessage"))
 }

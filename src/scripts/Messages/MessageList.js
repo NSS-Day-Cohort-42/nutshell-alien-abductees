@@ -8,21 +8,33 @@ const contentTarget = document.querySelector(".chatContainer")
 let messages = []
 
 let editingMessageId = null
+let currentScrollPos = null
 
-eventHub.addEventListener("messagesStateChanged", () => {
+eventHub.addEventListener("messagesStateChanged", event => {
   messages = useMessages()
-  render()
-})
+  const stateChangeDescription = event.detail.stateChangeDescription
 
-eventHub.addEventListener("messageEditFinished", () => {
-  editingMessageId = null
-  render()
+  switch(stateChangeDescription) {
+    case "newMessage":
+      render()
+      scrollToBottom()
+      break
+    case "editedMessage":
+      editingMessageId = null
+      render()
+      scrollToPreviousScrollPosition()
+      break
+    default:
+      render()
+      scrollToPreviousScrollPosition()
+  }
 })
 
 eventHub.addEventListener("editMessageButtonClicked", event => {
   const messageId = parseInt(event.detail.messageId)
   editingMessageId = messageId
   render()
+  scrollToPreviousScrollPosition()
 })
 
 export const MessageList = () => {
@@ -30,6 +42,7 @@ export const MessageList = () => {
     .then(() => {
       messages = useMessages()
       render()
+      scrollToBottom()
     })
 }
 
@@ -45,10 +58,18 @@ const render = () => {
       ${ MessageForm() }
     </div>
   `
-  scrollToBottom()
+
+  document.querySelector(".messageList").addEventListener("scroll", event => {
+    currentScrollPos = event.target.scrollTop
+  })
 }
 
 const scrollToBottom = () => {
   const messageList = document.querySelector(".messageList")
   messageList.scrollTop = messageList.scrollHeight - messageList.clientHeight
+}
+
+const scrollToPreviousScrollPosition = () => {
+  const messageList = document.querySelector(".messageList")
+  messageList.scrollTop = currentScrollPos
 }
