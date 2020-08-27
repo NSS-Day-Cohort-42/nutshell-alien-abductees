@@ -14,10 +14,13 @@ const eventHub = document.querySelector(".container")
 const render = () => {
     const events = useEvents()
     const weather = useEventWeather()
-    debugger
+    
+
+
+
             
         const rep = events.map(event => {
-                return eventsHTML(event)
+                return eventsHTML(event, weather)
             }).join("")
             contentTarget.innerHTML = rep
 
