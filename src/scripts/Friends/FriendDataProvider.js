@@ -45,19 +45,6 @@ export const saveFriend = (userId) => {
         .then(getFriends)
         .then(dispatchStateChangeEvent)
     }
-<<<<<<< HEAD
-
-    return fetch("http://localhost:8088/friends", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(friendObj)
-    })
-    .then(getFriends)
-    .then(dispatchStateChangeEvent)
-=======
->>>>>>> master
 }
 
 
