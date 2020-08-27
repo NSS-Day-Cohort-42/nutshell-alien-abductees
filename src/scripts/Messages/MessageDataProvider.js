@@ -41,11 +41,9 @@ export const saveMessage = messageData => {
     .then(() => broadcastMessagesStateChanged("newMessage"))
 }
 
-export const updateMessage = messageObj => {
-  const id = messageObj.id
-
+export const updateMessage = (id, messageObj) => {
   return fetch(`http://localhost:8088/messages/${id}`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json"
     },
