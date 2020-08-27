@@ -9,6 +9,8 @@ import "./Events/EventForm.js"
 import "./News/NewsForm.js"
 import "./Friends/FriendForm.js"
 import { FriendList } from "./Friends/FriendList.js"
+import { getUsername } from "./auth/CurrentLogin.js"
+
 
 export const Nutshell = () => {
     weatherList()
@@ -19,4 +21,5 @@ export const Nutshell = () => {
     TaskList()
     eventList()
     NewsList()
+    getUsername()
 }
