@@ -18,8 +18,6 @@ eventHub.addEventListener("click", clickEvent => {
         const eventState = document.querySelector("#eventState").value
         const eventZipCode = document.querySelector("#eventZip").value
 
-
-
         const newEvent = {
             name: eventTitle,
             date: eventDate,
@@ -29,7 +27,6 @@ eventHub.addEventListener("click", clickEvent => {
             userId: sessionStorage.getItem("activeUser")
         }
         saveEvents(newEvent)
-
         contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
     }
 })
