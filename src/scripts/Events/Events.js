@@ -1,5 +1,6 @@
 //emily h
-//converts the event object in to html
+//handles html representation, 
+//listens for click events to manipulate innerHTML as needed
 
 import { deleteEvent } from "./EventDataProvider.js"
 
