@@ -64,33 +64,19 @@ export const saveTask = (taskObj) => {
     .then(dispatchStateChangeEvent) //event that says app state was changed
 }
 
-export const patchTask = (taskObj) => {
-    taskObj.complete === true
-
-    return fetch(`http://localhost:8088/tasks/${taskObj.id}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: taskObj
-    })
-    .then(getTasks)
-    .then(dispatchStateChangeEvent)
-}
-
-
 export const patchTask = (taskId) => {
-    const taskObj = {
+    const completedTask = {
         complete: true
     }
-
-    return fetch(`http://localhost:8088/tasks`, {
+    return fetch(`http://localhost:8088/tasks/${taskId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
-        body: taskObj
+        body: completedTask
     })
     .then(getTasks)
     .then(dispatchStateChangeEvent)
 }
+
+

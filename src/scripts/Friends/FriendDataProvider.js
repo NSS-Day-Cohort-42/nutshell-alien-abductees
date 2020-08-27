@@ -39,8 +39,6 @@ export const saveFriend = (userId) => {
     })
     .then(getFriends)
     .then(dispatchStateChangeEvent)
-
-  
 }
 
 
