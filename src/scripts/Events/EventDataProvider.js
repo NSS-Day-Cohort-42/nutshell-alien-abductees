@@ -32,7 +32,7 @@ export const getEvents = () => {
 
 export const useEvents = () => {
     const friendRelationships = friends.filter(friendRel => {
-        return friendRel.activeUserId === parseInt(sessionStorage.getItem("activeUserId"))
+        return friendRel.activeUserId === parseInt(sessionStorage.getItem("activeUser"))
     })
     const filteredEvents = events.filter(event => {
         if (event.userId === parseInt(sessionStorage.getItem("activeUser"))) {
