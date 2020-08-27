@@ -12,7 +12,13 @@ const dispatchStateChangeEvent = () => {
 
 //function to make a copy of tasks array
 export const useTasks = () => {
-    return tasks.slice()
+
+    const personalTasks = tasks.filter(task => {
+        if (task.userId === parseInt(sessionStorage.getItem("activeUser"))) {
+            return true
+        }
+    })
+    return personalTasks.slice()
 }
 
 //function to get tasks from API
