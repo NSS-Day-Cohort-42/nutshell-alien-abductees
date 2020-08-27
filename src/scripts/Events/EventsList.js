@@ -2,7 +2,7 @@
 //combines info from the provider and events.js to render events that have already been created
 
 import { getEvents, useEvents } from "./EventDataProvider.js"
-import {eventsHTML, showEventWeather} from "./Events.js"
+import {eventsHTML} from "./Events.js"
 import {useEventWeather, getEventWeather} from "../Weather/WeatherDataProvider.js"
 
 
@@ -60,7 +60,6 @@ const render = () => {
 
 export const eventList = () => {
     getEvents()
-        .then(showEventWeather)
         .then(render)
     
 }

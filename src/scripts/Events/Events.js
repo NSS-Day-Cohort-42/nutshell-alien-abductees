@@ -14,6 +14,22 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+eventHub.addEventListener("click", (clickEvent) => {
+        if (clickEvent.target.id.startsWith("eventWeather--")) {
+        const buttonId = clickEvent.target.id.split("--")[1]
+        const customEvent = new CustomEvent("showWeatherClicked", {
+          detail: {
+            eventId: buttonId
+          }
+        })
+      eventHub.dispatchEvent(customEvent) 
+      } else if (clickEvent.target.id.startsWith("hideWeather--")) {
+        const [prefix, id] = clickEvent.target.id.split("--")
+        const contentTarget = document.querySelector(`#weather--${id}`)
+        contentTarget.close()
+      }
+    })
+
 export const eventsHTML = (eventObj) => {
     return `
     <div class="event--${eventObj.id}">
@@ -30,22 +46,7 @@ export const eventsHTML = (eventObj) => {
 }
 
 
-export const showEventWeather = () => {
-    eventHub.addEventListener("click", (clickEvent) => {
-      if (clickEvent.target.id.startsWith("eventWeather--")) {
-        const buttonId = clickEvent.target.id.split("--")[1]
-        const customEvent = new CustomEvent("showWeatherClicked", {
-          detail: {
-            eventId: buttonId
-          }
-        })
-      eventHub.dispatchEvent(customEvent) 
-      } else if (clickEvent.target.id.startsWith("hideWeather--")) {
-        const [prefix, id] = clickEvent.target.id.split("--")
-        const contentTarget = document.querySelector(`#weather--${id}`)
-        contentTarget.close()
-      }
-    })
-  }
+
+
 
 
