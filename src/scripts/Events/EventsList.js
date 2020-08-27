@@ -24,6 +24,7 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
                 const theDialog = document.querySelector(`#weather--${eventId}`)
                 const rep = `
                 <div class="weather--${weatherObj.dt}">
+                <h4>forecast:</h4>
                 <img class="weatherIcon" src="./images/WeatherIcons/${weatherObj.weather[0].icon}.png" alt="Weather description icon">
                 <div class="weatherDetail">${weatherObj.weather[0].description}</div>
                 <div class="weatherDetail">high of ${Math.floor(weatherObj.main.temp_max)}°F</div>
