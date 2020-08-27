@@ -3,11 +3,21 @@ import { saveFriend } from "../Friends/FriendDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 
+// handle a click event on the message card... can be the message delete button, edit button, or can represent the user opening an add friend <dialog> and clicking yes/cancel in that dialog
 eventHub.addEventListener("click", event => {
   const [ prefix, id ] = event.target.id.split("--")
 
   if(prefix === "deleteMessage") {
     deleteMessage(id)
+  }
+
+  else if(prefix === "editMessage") {
+    const editMessageButtonCilckedEvent = new CustomEvent("editMessageButtonClicked", {
+      detail: {
+        messageId: id
+      }
+    })
+    eventHub.dispatchEvent(editMessageButtonCilckedEvent)
   }
 
   else if(prefix === "openAddFriendDialog") {
@@ -40,7 +50,7 @@ export const Message = messageObj => {
         <button class="message__username" id="openAddFriendDialog--${userId}" ${isActiveUser ? "disabled" : ""}>${user.username}:</button>
         <p class="message__text">${message}</p>
       </div>
-      ${ messageDeleteButton(id, isActiveUser) }
+      ${ messageActionButtonsHTML(id, isActiveUser) }
 
       <dialog class="dialog friend-dialog" id="addFriendDialog--${userId}">
         <p class="friend-dialog__prompt">Would you like to add ${user.username} as a friend?</p>
@@ -52,12 +62,15 @@ export const Message = messageObj => {
 }
 
 /**
- * If the given userId matches the userId of the activeUser, then return a button that will allow the user to delete the message... otherwise they should not be able to delete the message so just return an empty string
+ * If the given userId matches the userId of the activeUser, then return a div containing buttons that will allow them to manipulate their message (delete it or edit it)
  */
-const messageDeleteButton = (messageId, isActiveUser) => {
+const messageActionButtonsHTML = (messageId, isActiveUser) => {
   if(isActiveUser) {
     return `
-      <button class="message__deleteButton" id="deleteMessage--${messageId}">Delete Message</button>
+      <div class="message__actionButtonsWrapper">
+        <button class="message__editButton" id="editMessage--${messageId}">Edit</button>
+        <button class="message__deleteButton" id="deleteMessage--${messageId}">Delete</button>
+      </div>
     `
   }
   return "";

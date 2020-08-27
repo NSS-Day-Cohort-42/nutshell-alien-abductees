@@ -2,8 +2,12 @@ let messages = []
 
 const eventHub = document.querySelector(".container")
 
-const broadcastMessagesStateChanged = () => {
-  const messagesStateChangedEvent = new CustomEvent("messagesStateChanged")
+const broadcastMessagesStateChanged = stateChangeDescription => {
+  const messagesStateChangedEvent = new CustomEvent("messagesStateChanged", {
+    detail: {
+      stateChangeDescription: stateChangeDescription
+    }
+  })
   eventHub.dispatchEvent(messagesStateChangedEvent)
 }
 
@@ -18,7 +22,6 @@ export const useMessages = () => {
     .slice()
     .sort((currentMessage, nextMessage) => currentMessage.timestamp - nextMessage.timestamp)
 }
-
 
 export const saveMessage = messageData => {
   const messageObj = {
@@ -35,7 +38,21 @@ export const saveMessage = messageData => {
     body: JSON.stringify(messageObj)
   })
     .then(getMessages)
-    .then(broadcastMessagesStateChanged)
+    .then(() => broadcastMessagesStateChanged("newMessage"))
+}
+
+export const updateMessage = messageObj => {
+  const id = messageObj.id
+
+  return fetch(`http://localhost:8088/messages/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(messageObj)
+  })
+    .then(getMessages)
+    .then(() => broadcastMessagesStateChanged("editedMessage"))
 }
 
 export const deleteMessage = messageId => {
@@ -43,5 +60,5 @@ export const deleteMessage = messageId => {
     method: "DELETE"
   })
     .then(getMessages)
-    .then(broadcastMessagesStateChanged)
+    .then(() => broadcastMessagesStateChanged("deletedMessage"))
 }
