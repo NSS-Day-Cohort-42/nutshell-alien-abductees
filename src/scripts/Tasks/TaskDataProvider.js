@@ -63,3 +63,17 @@ export const saveTask = (taskObj) => {
     .then(getTasks) //get updated data from the API
     .then(dispatchStateChangeEvent) //event that says app state was changed
 }
+
+export const patchTask = (taskObj) => {
+    taskObj.complete === true
+
+    return fetch(`http://localhost:8088/tasks/${taskObj.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": application/json
+        },
+        body: taskObj
+    })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent)
+}
