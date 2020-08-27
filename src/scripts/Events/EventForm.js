@@ -28,12 +28,6 @@ eventHub.addEventListener("click", clickEvent => {
         }
         saveEvents(newEvent)
         contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
-        const customEvent = new CustomEvent("createdEvent", {
-            detail: {
-                location: eventZipCode
-            }
-        })
-        eventHub.dispatchEvent(customEvent)
     }
 })
 
