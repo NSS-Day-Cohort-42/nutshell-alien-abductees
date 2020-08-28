@@ -21,9 +21,14 @@ const renderNews = () =>{
         return new Date(b.timestamp) - new Date(a.timestamp)
       })
     
-    contentTarget.innerHTML = sortedNews.map(article =>{
+    const newsRep = sortedNews.map(article =>{
         return newsHTML(article)
     }).join("")
+    contentTarget.innerHTML = `
+    <h2>News</h2>
+    ${newsRep}
+    `
+  
 }
 
 eventHub.addEventListener("newsStateChanged",customEvent =>{

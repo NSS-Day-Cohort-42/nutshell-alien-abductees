@@ -15,6 +15,7 @@ h1 {
 
 body {
     margin: 0;
+
 }
 
 
@@ -45,6 +46,7 @@ body {
 }
 
 .container {
-    background-color: #303030;
+    /* background-color: #303030; */
+    background-image: url("../images/outerspace.jpg");
     color: #FFFDF5;
 }
