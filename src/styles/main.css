@@ -7,7 +7,7 @@
 @import "./tasks.css";
 @import "./friends.css";
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Play:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Play:wght@700&display=swap');
 
 h1 {
     font-family: 'Play', sans-serif;  
@@ -27,6 +27,12 @@ body {
     padding: 1rem
 
 
+.eventsContainer{
+    font-family: 'EB Garamond', serif;
+}
+
+.newsContainer, .tasksContainer {
+    border: 2px dotted black;
 }
 
 .bottomContent {
