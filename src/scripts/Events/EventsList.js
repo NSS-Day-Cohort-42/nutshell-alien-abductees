@@ -50,7 +50,11 @@ const render = () => {
         const rep = events.map(event => {
              return eventsHTML(event)
         }).join("")
-    contentTarget.innerHTML = rep
+    contentTarget.innerHTML = `
+    <h2>Upcoming Events</h2>
+    ${rep}
+    `
+   
 }
 
 

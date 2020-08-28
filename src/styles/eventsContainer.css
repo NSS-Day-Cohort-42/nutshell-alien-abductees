@@ -1,20 +1,32 @@
+.eventsContainer {
+    font-family: 'EB Garamond', serif;
+    max-height: 400px;
+    overflow: scroll;
+}
+
+
+
+.eventForm {
+    border: 2px solid black;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: #EDEDED;
+    color: black;
+}
+
 .eventCard {
-    border: 1px solid black;
+    margin: .25rem 0rem;
     background-color: #FFDEC3;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: #808080;
 }
 .friendEvent {
     font-style: italic;
     background-color: cornsilk;
-}
-
-.eventsContainer {
-    padding: 1rem 2rem;
-    max-height: 400px;
-    overflow: scroll;
+    color: #808080;
 }
 
 .eventCard > button {
