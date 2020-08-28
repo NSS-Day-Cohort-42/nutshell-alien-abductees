@@ -51,8 +51,5 @@ export const eventForm = () => {
                 </fieldset>
             <button id="saveEvent">Save Event</button>
         </div>
-    
-    
-    
     `
 }
