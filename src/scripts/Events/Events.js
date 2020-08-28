@@ -33,7 +33,7 @@ eventHub.addEventListener("click", (clickEvent) => {
 export const eventsHTML = (eventObj) => {
  
     return `
-    <div class="event--${eventObj.id}">
+    <div id="event" class="event--${eventObj.id}">
         <div class="eventTitle">${eventObj.name}</div>
         <div class="eventDate">${new Date(eventObj.date).toLocaleDateString('en-US')}</div>
         <div class="eventLocation">${eventObj.city}, ${eventObj.state}</div>

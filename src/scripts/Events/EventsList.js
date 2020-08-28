@@ -60,8 +60,11 @@ const render = () => {
 
 export const eventList = () => {
     getEvents()
-        .then(render)
-    
+    .then(render)
+    .then(() => {
+        const element = document.getElementById("event")
+        element.classList.add("firstEvent")
+    })
 }
 
 eventHub.addEventListener("eventStateChanged", eventList)
