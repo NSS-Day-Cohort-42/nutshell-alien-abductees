@@ -1,3 +1,5 @@
+// Jacob Eckert - module to handle creating the HTML for a Message Form. Handles a message form both in the context of creating a new message and editing an existing message. Handles a message form both in the context of creating/editing a public chat message and creating/editing a private message.
+
 import { saveMessage, updateMessage } from "./MessageDataProvider.js"
 
 const eventHub = document.querySelector(".container")

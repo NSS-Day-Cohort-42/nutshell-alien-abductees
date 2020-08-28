@@ -1,3 +1,5 @@
+// Jacob Eckert - render <nav> of buttons that, when clicked, dispatch various custom events indicating which button was clicked
+
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".navBarContainer")
 
