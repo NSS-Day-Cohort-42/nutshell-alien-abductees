@@ -12,6 +12,10 @@ h1 {
     font-family: 'Play', sans-serif;  
 }
 
+.eventsContainer{
+    font-family: 'EB Garamond', serif;
+}
+
 .newsContainer, .eventsContainer, .tasksContainer {
     border: 2px dotted black;
 }
