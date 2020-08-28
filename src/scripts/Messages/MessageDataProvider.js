@@ -1,3 +1,5 @@
+// Jacob Eckert - module to handle all data manipulation stuff with messages (incl. loading messages from API, returning collection of public messages/private messages, saving messages, updating messages, deleting messages, broadcasting state change events when message state changes)
+
 let messages = []
 
 const eventHub = document.querySelector(".container")
