@@ -16,13 +16,12 @@ h1 {
     font-family: 'EB Garamond', serif;
 }
 
-.newsContainer, .eventsContainer, .tasksContainer {
+.newsContainer, .tasksContainer {
     border: 2px dotted black;
 }
 
 .bottomContent {
     display: flex;
-    border: 2px dotted red;
     justify-content: space-around;
 }
 
