@@ -19,7 +19,7 @@ const render = () => {
         .then(() => {
             const weather = useNashvilleWeather()
             contentTarget.innerHTML = `
-            <h3 class"currentWeatherHeader">Current Weather for Nashville</h3>
+            <h3 class="currentWeatherHeader">Current Weather for Nashville</h3>
             ${weatherHTML(weather)}` 
         })
 
