@@ -116,6 +116,7 @@ const render = () => {
     </div>
   `
 
+  // after rendering the list, scroll the list to the scroll position saved in currentScrollPos, or to the bottom of the list
   scrollToTargetScrollPosition()
 
   // add scroll event listener to messageList after putting it on the dom, keep track of where the list is scrolled to
@@ -124,7 +125,7 @@ const render = () => {
   })
 }
 
-// scroll the list to the last scroll position it was scrolled to saved in component-state currentScrollPos variable, or if currentScrollPos is null scroll to bottom of list
+// scroll the list to the last scroll position it was scrolled to (saved in component-state currentScrollPos variable), or if currentScrollPos is null scroll to bottom of list
 const scrollToTargetScrollPosition = () => {
   const messageList = document.querySelector(".messageList")
   if(currentScrollPos === null) {
