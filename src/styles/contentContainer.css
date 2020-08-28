@@ -7,10 +7,7 @@
     justify-content: center;
 }
 
-.firstEvent {
-    font-weight: bold;
-}
-#friendEvent {
+.friendEvent {
     font-style: italic;
     background-color: cornsilk;
 }
@@ -33,3 +30,7 @@
 .showWeather {
     margin: 0 2rem;
 }
+
+.firstEvent {
+    font-weight: bold;
+    }

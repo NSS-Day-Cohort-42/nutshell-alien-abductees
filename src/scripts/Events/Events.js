@@ -34,7 +34,7 @@ eventHub.addEventListener("click", (clickEvent) => {
 export const eventsHTML = (eventObj) => {
  
     return `
-    ${parseInt(sessionStorage.getItem("activeUser")) === eventObj.userId ? `<div class="event--${eventObj.id} eventCard">` : `<div id="friendEvent" class="event--${eventObj.id} eventCard">`}
+    ${parseInt(sessionStorage.getItem("activeUser")) === eventObj.userId ? `<div id="event" class="event--${eventObj.id} eventCard">` : `<div id="event" class="event--${eventObj.id} eventCard friendEvent">`}
     ${parseInt(sessionStorage.getItem("activeUser")) === eventObj.userId ? `<button id="deleteEvent--${eventObj.id}">x</button>`: "" }
         <h3 class="eventTitle">${eventObj.name}</h3>
         <div class="eventDate">${new Date(eventObj.date).toLocaleDateString('en-US')}</div>
