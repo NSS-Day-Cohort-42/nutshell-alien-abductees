@@ -1,10 +1,11 @@
 @import "./chat.css";
-@import "./contentContainer.css";
+@import "./eventsContainer.css";
 @import "./forms.css";
 @import "./header.css";
 @import "./navBar.css";
 @import "./news.css";
 @import "./tasks.css";
+@import "./friends.css";
 
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Play:wght@700&display=swap');
 
@@ -12,17 +13,28 @@ h1 {
     font-family: 'Play', sans-serif;  
 }
 
-.newsContainer, .eventsContainer, .tasksContainer {
-    border: 2px dotted black;
+body {
+    margin: 0;
+}
+
+.auth {
+    margin: 0;
     padding: 2rem;
-    margin: 2rem;
+}
+
+.sidebar {
+    margin: 1rem;
+    padding: 1rem
+
+
 }
 
 .bottomContent {
     display: flex;
-    border: 2px dotted red;
+    border: 2px dotted black;
     justify-content: space-around;
     margin: 2rem;
+    background-color: #808080;
 }
 
 .dashboard {
@@ -30,5 +42,6 @@ h1 {
 }
 
 .container {
-    background-color: #FFFDF5;
+    background-color: black;
+    color: #FFFDF5;
 }

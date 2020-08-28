@@ -1,7 +1,4 @@
-#completedTask {
-    text-decoration: line-through
-}
- .tasksContainer {
+.eventsContainer {
     border: 2px dotted #F4FFDC;
     padding: 2rem;
     margin: 2rem;

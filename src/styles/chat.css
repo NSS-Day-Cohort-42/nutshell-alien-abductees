@@ -24,3 +24,13 @@
 .message__username:disabled {
   cursor: auto;
 }
+
+.chatContainer {
+  border: 2px dotted #F4FFDC;
+  padding: 1rem;
+  margin: 1rem;
+  font-family: 'EB Garamond', serif;
+  background-color: #FFFDF5;
+  color: black;
+
+}

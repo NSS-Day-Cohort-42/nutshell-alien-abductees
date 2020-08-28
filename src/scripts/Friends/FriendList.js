@@ -55,7 +55,7 @@ const FriendsHTMLConverter = (users) => {
     return `
     ${
         users.map(user => {
-            return `<div>${user.username}</div>
+            return `<div class="friendCard">${user.username}</div>
                     <button id="deleteFriend--${user.id}">Delete Friend</button>`
         })
     }

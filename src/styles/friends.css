@@ -1,0 +1,14 @@
+.friendsContainer {
+    border: 2px dotted #F4FFDC;
+    padding: 1rem;
+    margin: 1rem;
+    font-family: 'EB Garamond', serif;
+    background-color: #FFFDF5;
+    color: black;
+
+}
+
+.friendCard {
+    padding: .5rem;
+    font-family: 'EB Garamond', serif;
+}

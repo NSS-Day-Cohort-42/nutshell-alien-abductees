@@ -3,11 +3,12 @@
     justify-content: center;
 }
 
-.taskForm, .eventForm, .noteForm {
+.taskForm, .eventForm, .noteForm, .friendForm {
     width: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: 'EB Garamond', serif;
 }
 
 .eventLocation {

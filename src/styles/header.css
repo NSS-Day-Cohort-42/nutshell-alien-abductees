@@ -10,17 +10,17 @@ header {
 
 h1 {
     align-self: center;
-    color: white;
+    color: #FFFDF5;
 }
 
 .currentWeatherHeader {
-    color: white;
+    color: #FFFDF5;
 }
 
 .currentLogin {
-    color: white;
+    color: #FFFDF5;
 }
 
 #weatherCard {
-    color: white;
+    color: #FFFDF5;
 }
