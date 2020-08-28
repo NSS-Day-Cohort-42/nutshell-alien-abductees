@@ -76,7 +76,7 @@ export const deleteEvent = (eventId) => {
         .then(dispatchEventState)
 }
 
-//sessionStorage.getItem(“activeUser”)
+
 
     
 /*
