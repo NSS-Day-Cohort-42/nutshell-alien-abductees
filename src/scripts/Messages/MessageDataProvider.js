@@ -17,17 +17,19 @@ export const getMessages = () => {
     .then(messagesData => messages = messagesData)
 }
 
-export const useMessages = () => {
+export const usePublicMessages = () => {
   return messages
     .slice()
     .sort((currentMessage, nextMessage) => currentMessage.timestamp - nextMessage.timestamp)
+    .filter(message => !message.recipientId)
 }
 
-export const saveMessage = messageData => {
+export const saveMessage = (messageData, recipientId = null) => {
   const messageObj = {
     message: messageData.message,
     timestamp: Date.now(),
-    userId: parseInt(sessionStorage.getItem("activeUser"))
+    userId: parseInt(sessionStorage.getItem("activeUser")),
+    recipientId: recipientId
   }
 
   return fetch("http://localhost:8088/messages", {

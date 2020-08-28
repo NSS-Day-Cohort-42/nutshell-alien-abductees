@@ -1,4 +1,4 @@
-import { getMessages, useMessages } from "./MessageDataProvider.js"
+import { getMessages, usePublicMessages } from "./MessageDataProvider.js"
 import { Message } from "./Message.js"
 import { MessageForm } from "./MessageForm.js"
 
@@ -12,7 +12,7 @@ let currentScrollPos = null
 
 // react to a state change of messages, handle re-rendering the list with new messages state, scrolling the list to where it should most user-friendly-ly be scrolled to, and unsetting the currently-editing message ID if state change represents a new edit
 eventHub.addEventListener("messagesStateChanged", event => {
-  messages = useMessages()
+  messages = usePublicMessages()
   const stateChangeDescription = event.detail.stateChangeDescription
 
   switch(stateChangeDescription) {
@@ -42,7 +42,7 @@ eventHub.addEventListener("editMessageButtonClicked", event => {
 export const MessageList = () => {
   getMessages()
     .then(() => {
-      messages = useMessages()
+      messages = usePublicMessages()
       render()
       scrollToBottom()
     })
