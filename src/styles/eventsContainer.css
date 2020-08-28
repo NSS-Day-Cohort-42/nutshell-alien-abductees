@@ -15,7 +15,7 @@
 }
 
 .eventCard {
-    border: 1px solid black;
+    margin: .25rem 0rem;
     background-color: #FFDEC3;
     padding: 1rem;
     display: flex;
