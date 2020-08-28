@@ -1,3 +1,5 @@
+// Jacob Eckert - module to convert a message object into an HTML representation, and handle browser generated click event on any of the actionable things rendered within the card
+
 import { deleteMessage } from "./MessageDataProvider.js"
 import { saveFriend } from "../Friends/FriendDataProvider.js"
 
