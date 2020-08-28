@@ -20,17 +20,15 @@ eventHub.addEventListener("messagesStateChanged", event => {
 
   switch(stateChangeDescription) {
     case "newMessage":
+      currentScrollPos = null
       render()
-      scrollToBottom()
       break
     case "editedMessage":
       editingMessageId = null
       render()
-      scrollToPreviousScrollPosition()
       break
     default:
       render()
-      scrollToPreviousScrollPosition()
   }
 })
 
@@ -39,7 +37,6 @@ eventHub.addEventListener("editMessageButtonClicked", event => {
   const messageId = parseInt(event.detail.messageId)
   editingMessageId = messageId
   render()
-  scrollToPreviousScrollPosition()
 })
 
 export const MessageList = () => {
@@ -47,7 +44,6 @@ export const MessageList = () => {
     .then(() => {
       messages = usePublicMessages()
       render()
-      scrollToBottom()
     })
 }
 
@@ -63,19 +59,21 @@ eventHub.addEventListener("friendSelected", event => {
   }
 
   updateMessagesState()
+  currentScrollPos = null
   render()
-  scrollToBottom()
 })
 
 // if friend state changed such that the active user is no longer friends with the selected user they are private chatting, set message list back to public chat state
 eventHub.addEventListener("friendStateChanged", () => {
-  const friends = useFriends()
-  const activeUserId = parseInt(sessionStorage.getItem("activeUser"))
-  if(!friends.some(friend => friend.activeUserId === activeUserId && friend.userId === selectedFriendId)) {
-    selectedFriendId = null
-    updateMessagesState()
-    render()
-    scrollToBottom() 
+  if(selectedFriendId) {
+    const friends = useFriends()
+    const activeUserId = parseInt(sessionStorage.getItem("activeUser"))
+    if(!friends.some(friend => friend.activeUserId === activeUserId && friend.userId === selectedFriendId)) {
+      selectedFriendId = null
+      updateMessagesState()
+      currentScrollPos = null
+      render()
+    }
   }
 })
 
@@ -118,20 +116,19 @@ const render = () => {
     </div>
   `
 
+  scrollToTargetScrollPosition()
+
   // add scroll event listener to messageList after putting it on the dom, keep track of where the list is scrolled to
   document.querySelector(".messageList").addEventListener("scroll", event => {
     currentScrollPos = event.target.scrollTop
   })
 }
 
-// scroll the list to the bottom
-const scrollToBottom = () => {
+// scroll the list to the last scroll position it was scrolled to saved in component-state currentScrollPos variable, or if currentScrollPos is null scroll to bottom of list
+const scrollToTargetScrollPosition = () => {
   const messageList = document.querySelector(".messageList")
-  messageList.scrollTop = messageList.scrollHeight - messageList.clientHeight
-}
-
-// scroll the list to the last scroll position it was scrolled to
-const scrollToPreviousScrollPosition = () => {
-  const messageList = document.querySelector(".messageList")
+  if(currentScrollPos === null) {
+    currentScrollPos = messageList.scrollHeight - messageList.clientHeight
+  }
   messageList.scrollTop = currentScrollPos
 }
