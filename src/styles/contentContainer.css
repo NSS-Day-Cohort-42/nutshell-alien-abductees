@@ -1,3 +1,6 @@
-#friendEvent {
+.firstEvent {
+    font-weight: bold;
+}
+.friendEvent {
     font-style: italic;
 }
