@@ -18,6 +18,9 @@ body {
 
 }
 
+.hidden {
+    visibility: hidden;
+}
 
 .auth {
     margin: 0;
