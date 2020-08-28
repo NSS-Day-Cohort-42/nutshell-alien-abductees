@@ -30,3 +30,15 @@ eventHub.addEventListener("newsStateChanged",customEvent =>{
 allNews = useNews()
 renderNews()
 })
+
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("editArt--")) {
+        const newsSelected = clickEvent.target.id.split("--")[1]
+        const editNewsClicked = new CustomEvent("editNewsClicked", {
+            detail: {
+                newsId: parseInt(newsSelected)
+            }
+        })
+        eventHub.dispatchEvent(editNewsClicked)
+    }
+})
