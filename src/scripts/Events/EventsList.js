@@ -49,7 +49,7 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
 const render = () => {
     const events = useEvents()
         const rep = events.map(event => {
-            return eventsHTML(event)
+             return eventsHTML(event)
         }).join("")
     contentTarget.innerHTML = rep
 }
@@ -61,7 +61,6 @@ const render = () => {
 export const eventList = () => {
     getEvents()
         .then(render)
-    
 }
 
 eventHub.addEventListener("eventStateChanged", eventList)
