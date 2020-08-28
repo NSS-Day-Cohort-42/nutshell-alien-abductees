@@ -17,6 +17,7 @@ body {
     margin: 0;
 }
 
+
 .auth {
     margin: 0;
     padding: 2rem;
@@ -25,22 +26,18 @@ body {
 .sidebar {
     margin: 1rem;
     padding: 1rem
-
-
-.eventsContainer{
-    font-family: 'EB Garamond', serif;
 }
 
-.newsContainer, .tasksContainer {
-    border: 2px dotted black;
+.contentContainer {
+    margin: 1rem;
+    padding: 1rem;
+   
 }
-
 .bottomContent {
     display: flex;
-    border: 2px dotted black;
     justify-content: space-around;
     margin: 2rem;
-    background-color: #808080;
+
 }
 
 .dashboard {
@@ -48,6 +45,6 @@ body {
 }
 
 .container {
-    background-color: black;
+    background-color: #303030;
     color: #FFFDF5;
 }

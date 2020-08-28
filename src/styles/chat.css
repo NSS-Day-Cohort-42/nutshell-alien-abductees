@@ -32,5 +32,7 @@
   font-family: 'EB Garamond', serif;
   background-color: #FFFDF5;
   color: black;
+  max-height: 400px;
+  overflow: scroll;
 
 }

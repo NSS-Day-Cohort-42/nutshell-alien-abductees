@@ -6,12 +6,19 @@
     padding: 2rem;
     margin: 2rem;
     font-family: 'EB Garamond', serif;
+    padding: 1rem 2rem;
+    max-height: 400px;
+    overflow: scroll;
+    background-color: #dcfff8;
+    color: #808080;
+    border: 1px solid black;
 }
 
 .taskForm {
-    border: 2px solid #808080;
+    border: 2px solid black;
     padding: 1rem;
     margin: 1rem;
-    background-color: #F4FFDC;
-    color: #808080;
+    background-color: #ededed;
+    color: black;
 }
+
