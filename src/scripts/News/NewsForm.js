@@ -88,6 +88,7 @@ eventHub.addEventListener("click", clickEvent=>{
         const title = document.querySelector("#newsTitleEdit")
         const synop = document.querySelector("#newsSynopEdit")
         const url = document.querySelector("#newsUrlEdit")
+        if (title.value && synop.value && url.value) {
 
         const editedNews = {
             
@@ -99,6 +100,9 @@ eventHub.addEventListener("click", clickEvent=>{
         }
         editNews(id,editedNews)
         dialog.close()
+    }else{
+        window.alert("Please complete all fields")
+    }
     }
    else if(clickEvent.target.id === "cancelNewsEdit"){
     const dialog = document.querySelector("#editDialog")
