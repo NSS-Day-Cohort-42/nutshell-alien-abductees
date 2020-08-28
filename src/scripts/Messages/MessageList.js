@@ -1,4 +1,5 @@
 import { getMessages, usePublicMessages, usePrivateMessagesWithUser } from "./MessageDataProvider.js"
+import { useUsers } from "../Users/UserDataProvider.js"
 import { Message } from "./Message.js"
 import { MessageForm } from "./MessageForm.js"
 
@@ -13,7 +14,7 @@ let selectedFriendId = null
 
 // react to a state change of messages, handle re-rendering the list with new messages state, scrolling the list to where it should most user-friendly-ly be scrolled to, and unsetting the currently-editing message ID if state change represents a new edit
 eventHub.addEventListener("messagesStateChanged", event => {
-  messages = updateMessagesState()
+  updateMessagesState()
   const stateChangeDescription = event.detail.stateChangeDescription
 
   switch(stateChangeDescription) {
@@ -49,6 +50,7 @@ export const MessageList = () => {
     })
 }
 
+// handle user having selected a friend. update messages state to only be those private messages between the activeUser and the selected user, rerender with only these messages
 eventHub.addEventListener("friendSelected", event => {
   const friendId = event.detail.friendId
 
@@ -61,8 +63,10 @@ eventHub.addEventListener("friendSelected", event => {
 
   updateMessagesState()
   render()
+  scrollToBottom()
 })
 
+// update component-state messages array - if no selectedFriendId is set that means we want public chat messages and thus usePublicMessage(), otherwise we should update component state messages to be the messages between the activeUser and the selected user
 const updateMessagesState = () => {
   if(selectedFriendId) {
     messages = usePrivateMessagesWithUser(selectedFriendId)
@@ -73,7 +77,18 @@ const updateMessagesState = () => {
 }
 
 const render = () => {
+  let headerMessage;
+
+  if(selectedFriendId) {
+    const selectedUser = useUsers().find(user => user.id === selectedFriendId)
+    headerMessage = `Private Chat with ${selectedUser.username}`
+  }
+  else {
+    headerMessage = "Public Chat"
+  }
+
   contentTarget.innerHTML = `
+    <h3 class="messageList__header">${headerMessage}</h3>
     <div class="messageList">
       ${ messages.map(message => {
 
@@ -86,7 +101,7 @@ const render = () => {
         return Message(message)
 
       }).join("") }
-      ${ MessageForm() }
+      ${ MessageForm({ recipientId: selectedFriendId }) }
     </div>
   `
 

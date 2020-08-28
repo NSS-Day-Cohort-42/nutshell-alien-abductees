@@ -39,12 +39,12 @@ const isPrivateMessageBetweenActiveUserAndUser = (message, userId) => {
   )
 }
 
-export const saveMessage = (messageData, recipientId = null) => {
+export const saveMessage = messageData => {
   const messageObj = {
     message: messageData.message,
+    recipientId: messageData.recipientId,
     timestamp: Date.now(),
-    userId: parseInt(sessionStorage.getItem("activeUser")),
-    recipientId: recipientId
+    userId: parseInt(sessionStorage.getItem("activeUser"))
   }
 
   return fetch("http://localhost:8088/messages", {
