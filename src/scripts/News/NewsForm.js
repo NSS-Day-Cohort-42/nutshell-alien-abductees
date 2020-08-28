@@ -11,9 +11,9 @@ eventHub.addEventListener("createNewsStoryClicked", () => {
     NewsForm()
 })
 
-export const NewsForm = () => {
-    contentTarget.innerHTML = `
-<section class = "noteForm">
+export const NewsForm = () =>{
+contentTarget.innerHTML = `
+<section class = "newsForm">
 <h2>Post A News Article</h2>
     <fieldset>
         <input type = "text" id="newsTitle" placeholder = "Article Title" />

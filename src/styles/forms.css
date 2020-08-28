@@ -1,14 +1,45 @@
 .formContainer {
     display: flex;
     justify-content: center;
+
 }
 
-.taskForm, .eventForm, .noteForm {
+.taskForm, .eventForm, .noteForm, .friendForm {
     width: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: 'EB Garamond', serif;
 }
+
+.newsForm > button {
+    font-family: 'EB Garamond', serif;
+    padding: .25rem;
+    margin: .25rem;
+}
+
+.eventForm > button {
+    font-family: 'EB Garamond', serif;
+    padding: .25rem;
+    margin: .25rem;
+}
+.taskForm > button {
+    font-family: 'EB Garamond', serif;
+    padding: .25rem;
+    margin: .25rem;
+
+}
+.noteForm > button {
+    font-family: 'EB Garamond', serif;
+    padding: .25rem;
+    margin: .25rem;
+}
+.friendForm > button {
+    font-family: 'EB Garamond', serif;
+    padding: .25rem;
+    margin: .25rem;
+}
+
 
 .eventLocation {
     display: flex;

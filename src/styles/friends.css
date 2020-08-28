@@ -1,0 +1,24 @@
+.friendsContainer {
+    border: 2px dotted #F4FFDC;
+    padding: 1rem;
+    margin: 2rem;
+    font-family: 'EB Garamond', serif;
+    background-color: #FFF8DC;
+    color: black;
+    max-height: 300px;
+    overflow: scroll;
+
+}
+
+.friendList__friend {
+    padding: .5rem;
+    font-family: 'EB Garamond', serif;
+}
+
+.friendForm {
+    border: 2px solid black;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: #EDEDED;
+    color: black;
+}
