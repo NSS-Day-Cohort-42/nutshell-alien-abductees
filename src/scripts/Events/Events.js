@@ -39,6 +39,10 @@ eventHub.addEventListener("click", clickEvent => {
     const buttonId = clickEvent.target.id.split("--")[1]
     const theDialog = document.querySelector(`#eventActionDialog--${buttonId}`)
     theDialog.showModal()
+  } else if(clickEvent.target.id.startsWith("close--")) {
+    const buttonId = clickEvent.target.id.split("--")[1]
+    const theDialog = document.querySelector(`#eventActionDialog--${buttonId}`)
+    theDialog.remove()
   }
 })
 
@@ -63,9 +67,10 @@ const userActionButtons = (event) => {
   if(parseInt(sessionStorage.getItem("activeUser")) === event.userId) {
     return `
         <button id="eventActions--${event.id}">...</button>
-        <dialog id="eventActionDialog--${event.id}">
-              <button id="deleteEvent--${event.id}">x</button>
+        <dialog id="eventActionDialog--${event.id}" class="eventActionDialog">
+              <button id="deleteEvent--${event.id}">delete</button>
               <button id="editEvent--${event.id}">edit</button>
+              <button id="close--${event.id}">nevermind</button>
         </dialog>`
     } else {
         return ""

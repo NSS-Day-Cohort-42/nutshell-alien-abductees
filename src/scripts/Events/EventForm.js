@@ -60,6 +60,9 @@ eventHub.addEventListener("click", clickEvent => {
                 .then(() => {
                     document.querySelector("#eventId").value = ""
                 })
+                .then(() => {
+                    contentTarget.innerHTML = ""
+                })
         }
     }
 })
