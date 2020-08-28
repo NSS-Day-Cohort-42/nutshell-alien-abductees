@@ -1,7 +1,7 @@
 /* Esther Sanders ... renders the friend list for current activeUser, listens for friendStateChanged and re-renders when new friend is added or deleted
 also includes HTML converter function */
 
-import { getFriends, useFriends, saveFriend, deleteFriend } from "./FriendDataProvider.js"
+import { getFriends, useFriends, deleteFriend } from "./FriendDataProvider.js"
 import { getUsers, useUsers } from "../Users/UserDataProvider.js"
 
 const contentTarget = document.querySelector(".friendsContainer")
@@ -49,13 +49,22 @@ eventHub.addEventListener("click", clickEvent => {
             })
         
     }
+    else if(clickEvent.target.id.startsWith("friendList__friend--")) {
+        const userId = parseInt(clickEvent.target.id.split("--")[1])
+        const friendSelectedEvent = new CustomEvent("friendSelected", {
+            detail: {
+                friendId: userId
+            }
+        })
+        eventHub.dispatchEvent(friendSelectedEvent)
+    }
 })
 
 const FriendsHTMLConverter = (users) => {
     return `
     ${
         users.map(user => {
-            return `<div>${user.username}</div>
+            return `<div id="friendList__friend--${user.id}" class="friendList__friend">${user.username}</div>
                     <button id="deleteFriend--${user.id}">Delete Friend</button>`
         })
     }
