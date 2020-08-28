@@ -7,6 +7,9 @@
     justify-content: center;
 }
 
+.firstEvent {
+    font-weight: bold;
+}
 #friendEvent {
     font-style: italic;
     background-color: cornsilk;

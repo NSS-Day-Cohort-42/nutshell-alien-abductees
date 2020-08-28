@@ -41,7 +41,6 @@ export const eventsHTML = (eventObj) => {
         <div class="eventLocation">${eventObj.city}, ${eventObj.state}</div>
         <button id="eventWeather--${eventObj.id}" class="showWeather">Show Weather</button>
         <dialog id="weather--${eventObj.id}">
-        
         </dialog>
         </div>
         `
