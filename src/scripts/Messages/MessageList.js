@@ -1,3 +1,5 @@
+// Jacob Eckert - module to handle rendering a collection of messages to the DOM. Maintains component-level state variables to facilitate rendering edit form for a message in-place, re-scrolling the message list to user friendly positions on various interactions, and changing the list context to just encompass private messages between the activeUser and a given userId
+
 import { getMessages, usePublicMessages, usePrivateMessagesWithUser } from "./MessageDataProvider.js"
 import { useUsers } from "../Users/UserDataProvider.js"
 import { Message } from "./Message.js"
