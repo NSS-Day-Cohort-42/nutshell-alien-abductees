@@ -1,4 +1,4 @@
-import { getMessages, usePublicMessages } from "./MessageDataProvider.js"
+import { getMessages, usePublicMessages, usePrivateMessagesWithUser } from "./MessageDataProvider.js"
 import { Message } from "./Message.js"
 import { MessageForm } from "./MessageForm.js"
 
@@ -9,10 +9,11 @@ let messages = []
 
 let editingMessageId = null
 let currentScrollPos = null
+let selectedFriendId = null
 
 // react to a state change of messages, handle re-rendering the list with new messages state, scrolling the list to where it should most user-friendly-ly be scrolled to, and unsetting the currently-editing message ID if state change represents a new edit
 eventHub.addEventListener("messagesStateChanged", event => {
-  messages = usePublicMessages()
+  messages = updateMessagesState()
   const stateChangeDescription = event.detail.stateChangeDescription
 
   switch(stateChangeDescription) {
@@ -46,6 +47,29 @@ export const MessageList = () => {
       render()
       scrollToBottom()
     })
+}
+
+eventHub.addEventListener("friendSelected", event => {
+  const friendId = event.detail.friendId
+
+  if(selectedFriendId === friendId) {
+    selectedFriendId = null
+  }
+  else {
+    selectedFriendId = friendId
+  }
+
+  updateMessagesState()
+  render()
+})
+
+const updateMessagesState = () => {
+  if(selectedFriendId) {
+    messages = usePrivateMessagesWithUser(selectedFriendId)
+  }
+  else {
+    messages = usePublicMessages()
+  }
 }
 
 const render = () => {

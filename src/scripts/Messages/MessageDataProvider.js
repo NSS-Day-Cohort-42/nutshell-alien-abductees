@@ -20,8 +20,23 @@ export const getMessages = () => {
 export const usePublicMessages = () => {
   return messages
     .slice()
-    .sort((currentMessage, nextMessage) => currentMessage.timestamp - nextMessage.timestamp)
     .filter(message => !message.recipientId)
+    .sort((currentMessage, nextMessage) => currentMessage.timestamp - nextMessage.timestamp)
+}
+
+export const usePrivateMessagesWithUser = userId => {
+  return messages
+    .filter((message) => isPrivateMessageBetweenActiveUserAndUser(message, userId))
+    .sort((currentMessage, nextMessage) => currentMessage.timestamp - nextMessage.timestamp)
+}
+
+const isPrivateMessageBetweenActiveUserAndUser = (message, userId) => {
+  const activeUserId = parseInt(sessionStorage.getItem("activeUser"))
+
+  return (
+    (message.userId === activeUserId && message.recipientId === userId) ||
+    (message.userId === userId && message.recipientId === activeUserId)
+  )
 }
 
 export const saveMessage = (messageData, recipientId = null) => {
