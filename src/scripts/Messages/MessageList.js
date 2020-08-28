@@ -2,6 +2,7 @@ import { getMessages, usePublicMessages, usePrivateMessagesWithUser } from "./Me
 import { useUsers } from "../Users/UserDataProvider.js"
 import { Message } from "./Message.js"
 import { MessageForm } from "./MessageForm.js"
+import { useFriends } from "../Friends/FriendDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".chatContainer")
@@ -64,6 +65,18 @@ eventHub.addEventListener("friendSelected", event => {
   updateMessagesState()
   render()
   scrollToBottom()
+})
+
+// if friend state changed such that the active user is no longer friends with the selected user they are private chatting, set message list back to public chat state
+eventHub.addEventListener("friendStateChanged", () => {
+  const friends = useFriends()
+  const activeUserId = parseInt(sessionStorage.getItem("activeUser"))
+  if(!friends.some(friend => friend.activeUserId === activeUserId && friend.userId === selectedFriendId)) {
+    selectedFriendId = null
+    updateMessagesState()
+    render()
+    scrollToBottom() 
+  }
 })
 
 // update component-state messages array - if no selectedFriendId is set that means we want public chat messages and thus usePublicMessage(), otherwise we should update component state messages to be the messages between the activeUser and the selected user
