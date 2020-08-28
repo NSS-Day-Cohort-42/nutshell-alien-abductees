@@ -13,6 +13,8 @@ import { getUsername } from "./auth/CurrentLogin.js"
 
 
 export const Nutshell = () => {
+    document.querySelector(".nutshell").classList.remove("hidden")
+
     weatherList()
     FriendList()
 
