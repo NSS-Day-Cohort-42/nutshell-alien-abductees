@@ -1,13 +1,35 @@
 //emily h
 //renders the form that allows users to create events
 
-import { saveEvents } from "./EventDataProvider.js"
+import { saveEvents, editEvent, useEvents, getEvents } from "./EventDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".formContainer")
 
 eventHub.addEventListener("createEventClicked", () => {
     eventForm()
+})
+
+eventHub.addEventListener("editEventClicked", customEvent => {
+    eventForm()
+    
+    const events = useEvents()
+    const eventId = customEvent.detail.eventId
+    const eventToEdit = events.find(eventObj => eventId === eventObj.id)
+
+        const eventTitle = document.querySelector("#eventTitle")
+        const eventDate = document.querySelector("#eventDate")
+        const eventCity = document.querySelector("#eventCity")
+        const eventState = document.querySelector("#eventState")
+        const eventZipCode = document.querySelector("#eventZip")
+        const id = document.querySelector("#eventId")
+
+        eventTitle.value = eventToEdit.name
+        eventDate.value =  eventToEdit.date.split("T")[0]
+        eventCity.value =   eventToEdit.city 
+        eventState.value = eventToEdit.state
+        eventZipCode.value = eventToEdit.zip
+        id.value = eventToEdit.id
 })
 
 eventHub.addEventListener("click", clickEvent => {
@@ -17,6 +39,7 @@ eventHub.addEventListener("click", clickEvent => {
         const eventCity = document.querySelector("#eventCity").value
         const eventState = document.querySelector("#eventState").value
         const eventZipCode = document.querySelector("#eventZip").value
+        const id = document.querySelector("#eventId").value
 
         const newEvent = {
             name: eventTitle,
@@ -24,10 +47,20 @@ eventHub.addEventListener("click", clickEvent => {
             city: eventCity,
             state: eventState,
             zip: eventZipCode,
-            userId: parseInt(sessionStorage.getItem("activeUser"))
+            userId: parseInt(sessionStorage.getItem("activeUser")),
+            id: id
         }
-        saveEvents(newEvent)
-        contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
+
+        if(id ===""){
+            saveEvents(newEvent)
+            contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
+        } else {
+            editEvent(newEvent) 
+                .then(getEvents)
+                .then(() => {
+                    document.querySelector("#eventId").value = ""
+                })
+        }
     }
 })
 
@@ -49,6 +82,7 @@ export const eventForm = () => {
                     <input id="eventState" type="text" placeholder="state postal code">
                     <input id="eventZip" type="text" placeholder="zipcode">
                 </fieldset>
+                <input type="hidden" name="eventId" id="eventId">
             <button id="saveEvent">Save Event</button>
         </div>
     `

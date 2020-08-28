@@ -10,7 +10,6 @@ import {useEventWeather, getEventWeather} from "../Weather/WeatherDataProvider.j
 const contentTarget = document.querySelector(".eventsContainer")
 const eventHub = document.querySelector(".container")
 
-
 eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
     const eventId = parseInt(eventIdFromDetail.detail.eventId)
     const eventsArray = useEvents()
