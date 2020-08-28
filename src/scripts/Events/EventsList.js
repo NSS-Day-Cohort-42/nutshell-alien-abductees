@@ -1,5 +1,6 @@
 //emily h
 //combines info from the provider and events.js to render events that have already been created
+//listens for show weather clicked from events.js to render the forecast for the event
 
 import { getEvents, useEvents } from "./EventDataProvider.js"
 import {eventsHTML} from "./Events.js"
@@ -47,10 +48,9 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
 
 const render = () => {
     const events = useEvents()
-
-    const rep = events.map(event => {
-        return eventsHTML(event)
-    }).join("")
+        const rep = events.map(event => {
+             return eventsHTML(event)
+        }).join("")
     contentTarget.innerHTML = rep
 }
 
