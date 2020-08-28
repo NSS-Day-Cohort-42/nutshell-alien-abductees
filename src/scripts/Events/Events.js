@@ -6,6 +6,7 @@ import { deleteEvent } from "./EventDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 
+//listens for delete button being clicked, deletes event
 eventHub.addEventListener("click", clickEvent => {
     if(clickEvent.target.id.startsWith("deleteEvent")){
         const eventIdString = clickEvent.target.id.split("--")[1]
@@ -15,6 +16,7 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+//listens for show weather, dispatches custom event
 eventHub.addEventListener("click", (clickEvent) => {
         if (clickEvent.target.id.startsWith("eventWeather--")) {
         const buttonId = clickEvent.target.id.split("--")[1]
@@ -31,11 +33,57 @@ eventHub.addEventListener("click", (clickEvent) => {
       }
     })
 
+//listens for the eventActions button and opens dialog with event actions
+eventHub.addEventListener("click", clickEvent => {
+  if(clickEvent.target.id.startsWith("eventActions--")) {
+    const buttonId = clickEvent.target.id.split("--")[1]
+    const theDialog = document.querySelector(`#eventActionDialog--${buttonId}`)
+    theDialog.showModal()
+  } else if(clickEvent.target.id.startsWith("close--")) {
+    const buttonId = clickEvent.target.id.split("--")[1]
+    const theDialog = document.querySelector(`#eventActionDialog--${buttonId}`)
+    theDialog.close()
+  }
+})
+
+
+//listens for edit button, dispatches a custom event
+eventHub.addEventListener("click", clickEvent => {
+  if(clickEvent.target.id.startsWith("editEvent--")){
+      const eventId = clickEvent.target.id.split("--")[1]
+      const customEvent = new CustomEvent("editEventClicked", {
+          detail: {
+              eventId: parseInt(eventId)
+          }
+      })
+      const theDialog = document.querySelector(`#eventActionDialog--${eventId}`)
+      theDialog.remove()
+      eventHub.dispatchEvent(customEvent)
+  }
+})
+
+
+const userActionButtons = (event) => {
+  if(parseInt(sessionStorage.getItem("activeUser")) === event.userId) {
+    return `
+        <button id="eventActions--${event.id}">...</button>
+        <dialog id="eventActionDialog--${event.id}">
+          <div class="eventActionDialog">
+              <button id="deleteEvent--${event.id}">delete</button>
+              <button id="editEvent--${event.id}">edit</button>
+              <button id="close--${event.id}">nevermind</button>
+          </div>
+        </dialog>`
+    } else {
+        return ""
+    }
+  }
+
+
 export const eventsHTML = (eventObj) => {
- 
     return `
     ${parseInt(sessionStorage.getItem("activeUser")) === eventObj.userId ? `<div id="event" class="event--${eventObj.id} eventCard">` : `<div id="event" class="event--${eventObj.id} eventCard friendEvent">`}
-    ${parseInt(sessionStorage.getItem("activeUser")) === eventObj.userId ? `<button id="deleteEvent--${eventObj.id}">x</button>`: "" }
+    ${userActionButtons(eventObj)}
         <h3 class="eventTitle">${eventObj.name}</h3>
         <div class="eventDate">${new Date(eventObj.date).toLocaleDateString('en-US')}</div>
         <div class="eventLocation">${eventObj.city}, ${eventObj.state}</div>
@@ -45,9 +93,3 @@ export const eventsHTML = (eventObj) => {
         </div>
         `
       }
-
-      
-
-
-
-

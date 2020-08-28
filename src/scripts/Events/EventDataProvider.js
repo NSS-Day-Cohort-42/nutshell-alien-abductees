@@ -74,17 +74,18 @@ export const deleteEvent = (eventId) => {
     })
         .then(getEvents)
         .then(dispatchEventState)
-}
+}   
 
+export const editEvent = (eventObj) => {
+    const jsonEntry = JSON.stringify(eventObj)
 
-
-    
-/*
-export const editEvent = (eventId) => {
-    return  fetch(`http://localhost:8088/events/${eventId}`, {
-        method: "PUT"
+    return  fetch(`http://localhost:8088/events/${eventObj.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body:jsonEntry
     })
-        .then(getEntries)
-        .then(dispatchEventChange)
+        .then(getEvents)
+        .then(dispatchEventState)
 }
-*/

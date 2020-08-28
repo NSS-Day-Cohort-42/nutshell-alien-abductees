@@ -45,4 +45,10 @@
 .firstEvent {
     font-weight: bold;
     font-size: x-large;
+    margin: 0.5rem 0;
     }
+
+.eventActionDialog {
+    display: flex;
+    flex-direction: column;
+}
