@@ -10,6 +10,7 @@ import "./News/NewsForm.js"
 import "./Friends/FriendForm.js"
 import { FriendList } from "./Friends/FriendList.js"
 import { getUsername } from "./auth/CurrentLogin.js"
+import {logoutButton} from "./auth/Logout.js"
 
 
 export const Nutshell = () => {
@@ -17,6 +18,7 @@ export const Nutshell = () => {
 
     weatherList()
     FriendList()
+    logoutButton()
 
     NavBar();
     MessageList()
