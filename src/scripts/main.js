@@ -26,7 +26,6 @@ else {
 }
 
 eventHubBody.addEventListener("userLoggedOut", customEvent => {
-    console.log("logout clicked")
     sessionStorage.clear()
     LoginForm() 
     RegisterForm()
