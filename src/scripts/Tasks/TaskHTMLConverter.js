@@ -2,7 +2,7 @@
 
 export const TaskHTMLConverter = (taskObj) => {
     return `
-        <div class="taskCard--${taskObj.id}">
+        <div class="task taskCard--${taskObj.id}">
             <p>Task: ${taskObj.task}</p>
             <p>Complete by: ${new Date(taskObj.targetDate).toLocaleDateString('en-US')}</p>
             <label for="complete">Completed?</label>
@@ -15,7 +15,7 @@ export const TaskHTMLConverter = (taskObj) => {
 
 export const CompletedTaskHTMLConverter = (taskObj) => {
     return `
-        <div class="taskCard--${taskObj.id}" id="completedTask">
+        <div class="task taskCard--${taskObj.id}" id="completedTask">
             <p>Task: ${taskObj.task}</p>
             <button id="deleteTask--${taskObj.id}">Delete Task</button>
             <button id="addAgain--${taskObj.id}">Undo</button>
