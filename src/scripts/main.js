@@ -22,7 +22,5 @@ else {
     RegisterForm()
 }
 
-eventHub.addEventListener('userLoggedOut', {
-    LoginForm()
-    RegisterForm()
-})
+eventHub.addEventListener("userLoggedOut", LoginForm, RegisterForm)
+
