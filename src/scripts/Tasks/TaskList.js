@@ -1,6 +1,6 @@
 //Esther Sanders ... renders all tasks, listens for taskStateChanged event and re-renders as a user creates new tasks, edits, deletes, or completes tasks
 
-import { getTasks, useTasks, deleteTask, saveTask, patchTask } from "./TaskDataProvider.js"
+import { getTasks, useTasks, deleteTask, saveTask, patchTask, restoreTask } from "./TaskDataProvider.js"
 import { TaskHTMLConverter, CompletedTaskHTMLConverter } from "./TaskHTMLConverter.js"
 
 const eventHub = document.querySelector(".container")
@@ -73,6 +73,14 @@ eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("complete--")) {
         const [promt, id] = clickEvent.target.id.split("--")
         patchTask(parseInt(id))
+    }
+
+})
+
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("addAgain--")) {
+        const [prompt, id] = clickEvent.target.id.split("--")
+        restoreTask(id)
     }
 
 })

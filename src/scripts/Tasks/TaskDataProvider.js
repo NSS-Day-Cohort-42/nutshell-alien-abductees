@@ -85,4 +85,17 @@ export const patchTask = (taskId) => {
     .then(dispatchStateChangeEvent)
 }
 
-
+export const restoreTask = (taskId) => {
+    const restoredTask = {
+        complete: false
+    }
+    return fetch(`http://localhost:8088/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(restoredTask)
+    })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent)
+}

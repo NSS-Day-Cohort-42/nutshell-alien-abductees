@@ -18,6 +18,7 @@ export const CompletedTaskHTMLConverter = (taskObj) => {
         <div class="taskCard--${taskObj.id}" id="completedTask">
             <p>Task: ${taskObj.task}</p>
             <button id="deleteTask--${taskObj.id}">Delete Task</button>
+            <button id="addAgain--${taskObj.id}">Undo</button>
         </div>
     `
 
