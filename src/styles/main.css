@@ -29,12 +29,14 @@ body {
 
 .sidebar {
     margin: 1rem;
-    padding: 1rem
+    padding: 1rem;
+    flex: 1;
 }
 
 .contentContainer {
     margin: 1rem;
     padding: 1rem;
+    flex: 3;
    
 }
 .bottomContent {
@@ -52,4 +54,12 @@ body {
     /* background-color: #303030; */
     background-image: url("../images/outerspace.jpg");
     color: #FFFDF5;
+}
+
+.eventsContainer {
+    flex: 1;
+}
+
+.tasksContainer {
+    flex:1 ;
 }
