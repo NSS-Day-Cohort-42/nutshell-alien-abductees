@@ -14,6 +14,7 @@ let messages = []
 let editingMessageId = null
 let currentScrollPos = null
 let selectedFriendId = null
+const messageValues = {}
 
 // react to a state change of messages, handle re-rendering the list with new messages state, scrolling the list to where it should most user-friendly-ly be scrolled to, and unsetting the currently-editing message ID if state change represents a new edit
 eventHub.addEventListener("messagesStateChanged", event => {
@@ -23,9 +24,11 @@ eventHub.addEventListener("messagesStateChanged", event => {
   switch(stateChangeDescription) {
     case "newMessage":
       currentScrollPos = null
+      messageValues["publicChat"] = ""
       render()
       break
     case "editedMessage":
+      messageValues[editingMessageId] = ""
       editingMessageId = null
       render()
       break
@@ -90,6 +93,13 @@ eventHub.addEventListener("friendStateChanged", () => {
   }
 })
 
+// save what is typed into chat textareas between renders
+eventHub.addEventListener("input", event => {
+  if(event.target.id.startsWith("messageForm__message--")) {
+    messageValues[event.target.id.split("--")[1] || "publicChat"] = event.target.value
+  }
+})
+
 // if another browser tab added a new message, update state from API and re-render
 window.addEventListener("storage", () => {
   if(localStorage.getItem("newMessagesState") === "true") {
@@ -131,14 +141,14 @@ const render = () => {
 
         // if the current message is the one component state has marked as being edited, render the MessageForm here to edit that message
         if(message.id === editingMessageId) {
-          return MessageForm(message)
+          return MessageForm({ ...message, message: messageValues[message.id] || message.message })
         }
 
         // otherwise just render a message card
         return Message(message)
 
       }).join("") }
-      ${ MessageForm({ recipientId: selectedFriendId }) }
+      ${ MessageForm({ recipientId: selectedFriendId, message: messageValues["publicChat"] }) }
     </div>
   `
 
