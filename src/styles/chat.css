@@ -17,19 +17,46 @@
 
 .message__username {
   border: none;
-  background-color: #fff;
+  background-color: #D0D0D0;
   cursor: pointer;
   color: blue;
 }
 
 .message__username:disabled {
   cursor: auto;
+  color: green;
+}
+
+.message__username:hover{
+  text-decoration: underline;
 }
 
 .message {
   padding: .25rem;
+  display: flex;
+  justify-content: space-between;
 }
 
+.messageActions {
+  height: 10%;
+  align-self: center;
+  border: none;
+  background-color: #D0D0D0;
+  font-size: larger;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.messageActionButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+.messageActionDialog {
+  position: absolute;
+    right: 62%;
+    top: 134%;
+}
 .chatContainer {
   border: 2px solid black;
   padding: 1rem;

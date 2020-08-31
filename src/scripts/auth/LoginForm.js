@@ -31,7 +31,32 @@ eventHub.addEventListener("click", e => {
             })
     }
 })
+eventHub.addEventListener("keydown", e => {
+    if (e === 'Enter') {
+        const username = document.querySelector("#login--username").value
+        const password = document.querySelector("#login--password").value
 
+
+        return fetch(`http://localhost:8088/users?username=${username}`)
+            .then(response => response.json())
+            .then(users => {
+                if (users.length > 0) {
+                    const user = users[0]
+
+                    if (user.password === password) {
+                        sessionStorage.setItem("activeUser", user.id)
+                        eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
+                    }
+                    else {
+                        renderLoginError()
+                    }
+                }
+                else {
+                    renderLoginError()
+                }
+            })
+    }
+})
 
 const render = () => {
     contentTarget.innerHTML += `
