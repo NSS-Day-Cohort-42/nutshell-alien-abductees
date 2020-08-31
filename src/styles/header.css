@@ -2,15 +2,14 @@ header {
     display: flex;
     background-image: url("../images/emptyroad.jpg");
     background-size: cover;
-    height: 341px;
- 
+    height: 350px;
 
 }
 
 
 h1 {
     align-self: center;
-    flex: 4;
+    flex: 3;
     color: #FFFDF5;
     padding: 2rem;
 }
@@ -21,7 +20,9 @@ h1 {
     padding: 0;
 }
 .currentWeatherContainer {
-    margin: 1rem;
+    margin: 0rem 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: solid 1px #FFFDF5;
    
 }
 
@@ -32,10 +33,14 @@ h1 {
 
 .currentLogin {
     color: #FFFDF5;
-    padding: 1rem;
+    padding: 0.25rem 1rem;
    
 }
 
 #weatherCard {
     color: #FFFDF5;
+}
+
+.logoutButtonContainer {
+    padding: 0.25rem 1rem;
 }
