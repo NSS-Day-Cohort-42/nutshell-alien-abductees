@@ -28,7 +28,7 @@ export const getNews = () => {
             news = parseRes
         })
 }
-
+//Sam Johnson -- ability to get post edit and delete news articles from the active users news feed. This is where calls to the api are made
 export const saveNews = (article) => {
     return fetch(" http://localhost:8088/news", {
             method: "POST",

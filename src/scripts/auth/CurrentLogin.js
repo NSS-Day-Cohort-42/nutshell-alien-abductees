@@ -1,3 +1,5 @@
+//Sam Johnson -- checks to see which user is logged in and displays the username to the header
+
 import {
     useUsers,
     getUsers
