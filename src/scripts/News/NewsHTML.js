@@ -1,3 +1,5 @@
+//Sam Johnson -- This is where news objects are created into HTML and used to be rendered to the DOM. Also where the delete article interaction is listened for
+
 import { deleteNews } from "./NewsDataProvider.js"
 
 const eventHub = document.querySelector(".container")

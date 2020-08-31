@@ -1,3 +1,5 @@
+//Sam Johnson -- This renders the form componet when a user wants to post a new news article it is also where the form to edit an article is rendered
+
 import {
     useNews,
     saveNews,
