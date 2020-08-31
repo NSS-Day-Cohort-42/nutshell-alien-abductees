@@ -21,3 +21,8 @@ else {
     LoginForm()
     RegisterForm()
 }
+
+eventHub.addEventListener('userLoggedOut', {
+    LoginForm()
+    RegisterForm()
+})

@@ -11,5 +11,6 @@ contentTarget.innerHTML = `
 eventHub.addEventListener("click", clickEvent => {
     if(clickEvent.target.id==="logoutButton") {
         sessionStorage.clear()
+        eventHub.dispatchEvent(new CustomEvent("userLoggedOut"))
     }
 })
