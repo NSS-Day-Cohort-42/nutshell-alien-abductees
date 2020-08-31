@@ -13,5 +13,5 @@ export const useUsers = () => {
 }
 
 export const useUserByName = username => {
-    return users.find(user => user.username === username)
+    return users.find(user => user.username.toLowerCase() === username.toLowerCase())
 }
