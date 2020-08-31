@@ -41,7 +41,7 @@ Make sure you have Node.js and npm installed
 1. [Wireframe](https://miro.com/app/board/o9J_kmqQ4As=/)
 
 # Contributors
-[Emily Hartzell](https://github.com/egeehartz) 
-[Sam Johnson](https://github.com/Johnson4996)
-[Jacob Eckert](https://github.com/skratz17/)
-[Esther Sanders](https://github.com/estherviolin)
+[Emily Hartzell](https://github.com/egeehartz)   
+[Sam Johnson](https://github.com/Johnson4996)  
+[Jacob Eckert](https://github.com/skratz17/)  
+[Esther Sanders](https://github.com/estherviolin)  
