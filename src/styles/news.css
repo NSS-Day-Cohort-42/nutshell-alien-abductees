@@ -18,3 +18,26 @@
     max-height: 400px;
     overflow: scroll;
 }
+
+#newsCard{
+    border-bottom: 1px solid black;
+}
+
+#editDialog{
+    width: 40rem;
+    background-color: #EDEDED;
+}
+
+.newsUrlEdit{
+    margin-bottom: .5rem;
+}
+
+a{
+    color:black;
+    margin-right: 65%;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+.delArt{
+    margin-bottom: .5rem;
+}
