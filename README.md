@@ -10,12 +10,14 @@ Make sure you have Node.js and npm installed
 1. `touch database.json` file in the `api` directory
 1. Delete the `.ignore` file in the `api` directory
 1. In your `database.json` file, copy and paste the following empty arrays: 
-    `"users": [],
-    "tasks": [],
-    "events": [],
-    "news": [],
-    "messages": [],
-    "friends": []`
+    `{
+        "users": [],
+        "tasks": [],
+        "events": [],
+        "news": [],
+        "messages": [],
+        "friends": []
+    }`
 1. Serve JSON file utilizing `json-server -w database.json -p 8088`
 1. In a new tab in your terminal, `cd` into `src`, and `serve`
 1. Go to the localhost in your browser and register an account
