@@ -77,6 +77,14 @@ const getRecipientId = (message, recipientId) => {
     const username = message.split(' ')[0].substring(1)
     const user = useUserByName(username)
     if(user && isFriendWithActiveUser(user.id)) {
+      // user has initiated private chat with a specific user via the chat interface - switch over to private chat view with that user
+      const initiatedPrivateChatEvent = new CustomEvent("initiatedPrivateChat", {
+        detail: {
+          userId: user.id
+        }
+      })
+      eventHub.dispatchEvent(initiatedPrivateChatEvent)
+
       return user.id
     }
   }

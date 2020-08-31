@@ -65,6 +65,17 @@ eventHub.addEventListener("friendSelected", event => {
   render()
 })
 
+// handle user having initiated private chat with a friend (via @friend_user_name in the public chat) - set currentFriendId to the id of the user private chat was initiated with and re-render
+eventHub.addEventListener("initiatedPrivateChat", event => {
+  const userId = event.detail.userId
+
+  selectedFriendId = userId
+
+  updateMessagesState()
+  currentScrollPos = null
+  render()
+})
+
 // if friend state changed such that the active user is no longer friends with the selected user they are private chatting, set message list back to public chat state
 eventHub.addEventListener("friendStateChanged", () => {
   if(selectedFriendId) {
