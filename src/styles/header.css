@@ -21,6 +21,8 @@ h1 {
 }
 .currentWeatherContainer {
     margin: 0rem 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: solid 1px #FFFDF5;
    
 }
 
