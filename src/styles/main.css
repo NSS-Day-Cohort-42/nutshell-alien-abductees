@@ -29,12 +29,14 @@ body {
 
 .sidebar {
     margin: 1rem;
-    padding: 1rem
+    padding: 1rem;
+    flex: 1;
 }
 
 .contentContainer {
     margin: 1rem;
     padding: 1rem;
+    flex: 3;
    
 }
 .bottomContent {
