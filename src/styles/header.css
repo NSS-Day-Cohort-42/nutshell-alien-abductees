@@ -20,7 +20,7 @@ h1 {
     padding: 0;
 }
 .currentWeatherContainer {
-    margin: 1rem;
+    margin: 0rem 1rem;
    
 }
 
@@ -31,7 +31,7 @@ h1 {
 
 .currentLogin {
     color: #FFFDF5;
-    padding: 1rem;
+    padding: 0.25rem 1rem;
    
 }
 
@@ -40,5 +40,5 @@ h1 {
 }
 
 .logoutButtonContainer {
-    padding: 1rem;
+    padding: 0.25rem 1rem;
 }
