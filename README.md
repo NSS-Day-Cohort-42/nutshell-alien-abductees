@@ -17,7 +17,7 @@ Make sure you have Node.js and npm installed
     "messages": [],
     "friends": []`
 1. Serve JSON file utilizing `json-server -w database.json -p 8088`
-1. In a new tab in your terminal, `cd` into `src`, and serve `serve`
+1. In a new tab in your terminal, `cd` into `src`, and `serve`
 1. Go to the localhost in your browser and register an account
 
 # Homepage
