@@ -56,3 +56,7 @@ export const deleteFriend = (friend) => {
         .then(dispatchStateChangeEvent)
 }
 
+export const isFriendWithActiveUser = userId => {
+    const activeUserId = parseInt(sessionStorage.getItem("activeUser"))
+    return friends.some(friend => friend.activeUserId === activeUserId && friend.userId === userId)
+}

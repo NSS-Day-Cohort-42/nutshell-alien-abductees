@@ -1,6 +1,8 @@
 // Jacob Eckert - module to handle creating the HTML for a Message Form. Handles a message form both in the context of creating a new message and editing an existing message. Handles a message form both in the context of creating/editing a public chat message and creating/editing a private message.
 
 import { saveMessage, updateMessage } from "./MessageDataProvider.js"
+import { useUserByName } from "../Users/UserDataProvider.js"
+import { isFriendWithActiveUser } from "../Friends/FriendDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 
@@ -55,12 +57,35 @@ const createMessageObjectFromFormValues = id => {
   const messageNode = document.querySelector(`#messageForm__message--${id}`)
   const recipientIdNode = document.querySelector(`#messageForm__recipientId--${id}`)
 
+  let message = messageNode.value.trim()
+  const recipientId = getRecipientId(message, recipientIdNode.value)
+
+  if(message.startsWith("@")) {
+    message = message.split(" ").slice(1).join(" ")
+  }
+
   const messageObj = {
-    message: messageNode.value.trim(),
-    recipientId: recipientIdNode.value ? parseInt(recipientIdNode.value) : null
+    message: message,
+    recipientId: recipientId
   }
 
   return messageObj
+}
+
+const getRecipientId = (message, recipientId) => {
+  if(message.startsWith("@")) {
+    const username = message.split(' ')[0].substring(1)
+    const user = useUserByName(username)
+    if(user && isFriendWithActiveUser(user.id)) {
+      return user.id
+    }
+  }
+
+  if(recipientId) {
+    return parseInt(recipientId)
+  }
+
+  return null
 }
 
 // validate a message - if invalid do an error alert and return false. otherwise return true
