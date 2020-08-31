@@ -16,7 +16,7 @@ contentTarget.innerHTML = `
 <section class = "newsForm">
 <h2>Post A News Article</h2>
     <fieldset>
-        <input type = "text" id="newsTitle" placeholder = "Article Title" />
+        <input type = "text"  id="newsTitle" placeholder = "Article Title" />
     </fieldset>
     <fieldset>
         <textarea id="newsSynop" placeholder = "Article Synopsis" rows="3" cols="20"></textarea>
@@ -62,13 +62,13 @@ eventHub.addEventListener("editNewsClicked", customEvent => {
     dialog.innerHTML = `
     <section class = "EditNoteForm">
     <h2>Edit News Post</h2>
-    <fieldset>
+    <fieldset class="newsTitleEdit">
         <input type = "text" id="newsTitleEdit" value = "${newsObjToEdit.title}" />
     </fieldset>
-    <fieldset>
-        <textarea id="newsSynopEdit" rows="3" cols="20">${newsObjToEdit.synopsis}</textarea>
+    <fieldset  class="newsSnyopEdit">
+        <textarea id="newsSynopEdit" rows="6" cols="50">${newsObjToEdit.synopsis}</textarea>
     </fieldset>
-    <fieldset>
+    <fieldset  class="newsUrlEdit">
         <input type = "text" id="newsUrlEdit" value = "${newsObjToEdit.url}"/>
     </fieldset>
 <button id= "saveEdit--${newsObjToEdit.id}"> Save Changes </button>
