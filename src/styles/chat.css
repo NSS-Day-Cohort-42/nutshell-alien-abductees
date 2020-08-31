@@ -1,7 +1,7 @@
 .messageList {
   border: 1px solid black;
   padding: 0.5rem;
-  max-height: 250px;
+  max-height: 410px;;
   overflow: scroll;
 }
 
@@ -64,7 +64,7 @@
   font-family: 'EB Garamond', serif;
   background-color: #D0D0D0;
   color: black;
-  max-height: 400px;
+  max-height: 500px;
   overflow: scroll;
 
 }

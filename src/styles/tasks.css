@@ -22,3 +22,8 @@
     color: black;
 }
 
+.task {
+    border-bottom: 1px solid;
+    padding: 0 0 1rem 0;
+}
+
