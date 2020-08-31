@@ -90,7 +90,7 @@ const FriendsHTMLConverter = (users) => {
             const selectedClassName = user.id === selectedFriendId ? "friendList__friend--selected" : ""
             return `
                 <div class="friendList__friend-wrapper">
-                    <div id="friendList__friend--${user.id}" class="friendList__friend ${selectedClassName}">${user.username}</div>
+                    <div id="friendList__friend--${user.id}" class="friendList__friend ${selectedClassName}" title="click to start private chat">${user.username}</div>
                     <button id="deleteFriend--${user.id}">Delete Friend</button>
                 </div>`
         })

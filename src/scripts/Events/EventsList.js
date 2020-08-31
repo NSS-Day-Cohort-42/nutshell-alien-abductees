@@ -47,6 +47,9 @@ eventHub.addEventListener("showWeatherClicked", (eventIdFromDetail) => {
 
 const render = () => {
     const events = useEvents()
+    if(events.length === 0 ){
+        contentTarget.innerHTML = `<h2>No upcoming events</h2>`
+    } else {
         const rep = events.map(event => {
              return eventsHTML(event)
         }).join("")
@@ -54,6 +57,9 @@ const render = () => {
     <h2>Upcoming Events</h2>
     ${rep}
     `
+    const element = document.getElementById("event")
+        element.classList.add("firstEvent")
+    }
    
 }
 
@@ -64,10 +70,10 @@ const render = () => {
 export const eventList = () => {
     getEvents()
     .then(render)
-    .then(() => {
+    /*.then(() => {
         const element = document.getElementById("event")
         element.classList.add("firstEvent")
-    })
+    }) */
 }
 
 eventHub.addEventListener("eventStateChanged", eventList)

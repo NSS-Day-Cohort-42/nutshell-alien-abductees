@@ -37,6 +37,16 @@ eventHub.addEventListener("click", event => {
     const dialogNode = document.querySelector(`#addFriendDialog--${id}`)
     dialogNode.close()
   }
+
+  else if(prefix === "messageActions"){
+    const theDialog = document.querySelector(`#message__actionButtonsWrapper--${id}`)
+    theDialog.showModal()
+  }
+
+  else if(prefix === "closeMessageDialog") {
+    const theDialog = document.querySelector(`#message__actionButtonsWrapper--${id}`)
+    theDialog.close()
+  }
 })
 
 export const Message = messageObj => {
@@ -67,10 +77,14 @@ export const Message = messageObj => {
 const messageActionButtonsHTML = (messageId, isActiveUser) => {
   if(isActiveUser) {
     return `
-      <div class="message__actionButtonsWrapper">
+    <button class="messageActions" id="messageActions--${messageId}">...</button>
+      <dialog id="message__actionButtonsWrapper--${messageId}" class="messageActionDialog">
+      <div class="messageActionButtons">
         <button class="message__editButton" id="editMessage--${messageId}">Edit</button>
         <button class="message__deleteButton" id="deleteMessage--${messageId}">Delete</button>
+        <button id="closeMessageDialog--${messageId}">nevermind</button>
       </div>
+      </dialog>
     `
   }
   return "";
