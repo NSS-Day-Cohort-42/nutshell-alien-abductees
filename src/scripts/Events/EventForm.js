@@ -51,18 +51,22 @@ eventHub.addEventListener("click", clickEvent => {
             id: id
         }
 
-        if(id ===""){
-            saveEvents(newEvent)
-            contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
+        if(eventTitle === "" || eventDate === "" || eventCity === "" || eventState === "" || eventZipCode === ""){
+            window.alert("Please fill out ALL fields before submitting")
         } else {
-            editEvent(newEvent) 
-                .then(getEvents)
-                .then(() => {
-                    document.querySelector("#eventId").value = ""
-                })
-                .then(() => {
-                    contentTarget.innerHTML = ""
-                })
+            if(id ===""){
+                saveEvents(newEvent)
+                contentTarget.innerHTML = "" // wipe out formContainer after submission of new event
+            } else {
+                editEvent(newEvent) 
+                    .then(getEvents)
+                    .then(() => {
+                        document.querySelector("#eventId").value = ""
+                    })
+                    .then(() => {
+                        contentTarget.innerHTML = ""
+                    })
+            }
         }
     }
 })
