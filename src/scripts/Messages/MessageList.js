@@ -39,6 +39,10 @@ eventHub.addEventListener("messagesStateChanged", event => {
 
 // handle user clicking an "edit" button in a message card - set component state such that that is the message currently being edited and re-render list
 eventHub.addEventListener("editMessageButtonClicked", event => {
+  if(editingMessageId) {
+    messageValues[editingMessageId] = ""
+  }
+
   const messageId = parseInt(event.detail.messageId)
   editingMessageId = messageId
   render()
