@@ -1,3 +1,5 @@
+//Sam Johnson -- Componet that gets and renders the news. Listens for a change made by the user and then re-renders if necessary
+
 import { getNews, useNews } from "./NewsDataProvider.js";
 import { newsHTML } from "./NewsHTML.js";
 
