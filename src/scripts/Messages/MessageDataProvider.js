@@ -4,6 +4,8 @@ let messages = []
 
 const eventHub = document.querySelector(".container")
 
+localStorage.setItem("newMessagesState", "false") // seems that this has to be initialized for the "storage" event to fire correctly
+
 const broadcastMessagesStateChanged = stateChangeDescription => {
   const messagesStateChangedEvent = new CustomEvent("messagesStateChanged", {
     detail: {
@@ -11,12 +13,14 @@ const broadcastMessagesStateChanged = stateChangeDescription => {
     }
   })
   eventHub.dispatchEvent(messagesStateChangedEvent)
+
+  localStorage.setItem("newMessagesState", "true")
 }
 
 export const getMessages = () => {
   return fetch("http://localhost:8088/messages?_expand=user")
     .then(res => res.json())
-    .then(messagesData => messages = messagesData)
+    .then(messagesData => messages = messagesData) 
 }
 
 export const usePublicMessages = () => {

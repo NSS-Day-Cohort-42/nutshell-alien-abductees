@@ -90,6 +90,19 @@ eventHub.addEventListener("friendStateChanged", () => {
   }
 })
 
+// if another browser tab added a new message, update state from API and re-render
+window.addEventListener("storage", () => {
+  if(localStorage.getItem("newMessagesState") === "true") {
+    getMessages()
+      .then(() => {
+        updateMessagesState()
+        currentScrollPos = null
+        render()
+        localStorage.setItem("newMessagesState", "false")
+      })
+  }
+})
+
 // update component-state messages array - if no selectedFriendId is set that means we want public chat messages and thus usePublicMessage(), otherwise we should update component state messages to be the messages between the activeUser and the selected user
 const updateMessagesState = () => {
   if(selectedFriendId) {
