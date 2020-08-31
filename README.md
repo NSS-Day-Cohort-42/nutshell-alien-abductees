@@ -7,8 +7,13 @@ Nutshell is a dashboard for aliens to use to organize their daily tasks, events,
 Make sure you have Node.js and npm installed
 1. `git clone` repository URL
 1. `cd` into the directory it creates
-1. `touch database.json` file in the `api` directory
+1. `touch api/database.json`
 1. Delete the `.ignore` file in the `api` directory
+1. `touch src/Settings.js` 
+1. Visit <https://openweathermap.org/guide#how> to create an account and get your API key
+1. in `Settings.js` `export default {
+    weatherKey: "your API key here"
+}`
 1. In your `database.json` file, copy and paste the following empty arrays: 
     `{
         "users": [],
