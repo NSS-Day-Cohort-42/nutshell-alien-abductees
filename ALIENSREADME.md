@@ -12,7 +12,7 @@ Make sure you have Node.js and npm installed
 1. Delete the `.ignore` file in the `api` directory
 1. In your `database.json` file, add the following empty arrays: "users": [], "tasks": [], "events": [], "news": [], "messages": [], and "friends": []
 1. Serve JSON file utilizing `json-server -w database.json -p 8088`
-1. In a new tab in your terminal, `cd` into `src`, and serve (`hs`)
+1. In a new tab in your terminal, `cd` into `src`, and serve `hs`
 1. Go to localhost:8080 in your browser and register an account
 
 # Homepage
