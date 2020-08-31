@@ -1,8 +1,11 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
+import "./auth/Logout.js"
+import { weatherList } from "./Weather/WeatherList.js"
 
 const eventHub = document.querySelector(".container")
+const eventHubBody = document.body
 
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -16,8 +19,17 @@ eventHub.addEventListener("userAuthenticated", Nutshell)
 
 if(sessionStorage.getItem("activeUser")) {
     Nutshell()
+
 }
 else {
     LoginForm()
     RegisterForm()
+    weatherList()
 }
+
+eventHubBody.addEventListener("userLoggedOut", customEvent => {
+    sessionStorage.clear()
+    LoginForm() 
+    RegisterForm()
+    document.querySelector(".nutshell").classList.add("hidden")
+})
