@@ -39,3 +39,9 @@ Make sure you have Node.js and npm installed
 # Planning Links
 1. [ERD](https://dbdiagram.io/d/5f4522ea7b2e2f40e9deb4fe)
 1. [Wireframe](https://miro.com/app/board/o9J_kmqQ4As=/)
+
+# Contributors
+[Emily Hartzell](https://github.com/egeehartz)   
+[Sam Johnson](https://github.com/Johnson4996)  
+[Jacob Eckert](https://github.com/skratz17/)  
+[Esther Sanders](https://github.com/estherviolin)  
