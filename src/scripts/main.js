@@ -2,6 +2,7 @@ import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
 import "./auth/Logout.js"
+import { weatherList } from "./Weather/WeatherList.js"
 
 const eventHub = document.querySelector(".container")
 const eventHubBody = document.body
@@ -23,6 +24,7 @@ if(sessionStorage.getItem("activeUser")) {
 else {
     LoginForm()
     RegisterForm()
+    weatherList()
 }
 
 eventHubBody.addEventListener("userLoggedOut", customEvent => {
