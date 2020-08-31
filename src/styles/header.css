@@ -2,15 +2,14 @@ header {
     display: flex;
     background-image: url("../images/emptyroad.jpg");
     background-size: cover;
-    height: 341px;
- 
+    height: 350px;
 
 }
 
 
 h1 {
     align-self: center;
-    flex: 4;
+    flex: 3;
     color: #FFFDF5;
     padding: 2rem;
 }
@@ -38,4 +37,8 @@ h1 {
 
 #weatherCard {
     color: #FFFDF5;
+}
+
+.logoutButtonContainer {
+    padding: 1rem;
 }

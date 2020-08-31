@@ -1,16 +1,18 @@
 const contentTarget = document.querySelector(".logoutButtonContainer")
-const eventHub = document.querySelector(".container")
+const eventHub = document.body
 
+eventHub.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id==="logoutButton") {  
+        const logoutClicked = new CustomEvent("userLoggedOut")
+        eventHub.dispatchEvent(logoutClicked)
+        console.log("log out clicked")
+        contentTarget.innerHTML = ""
+    }
+})
 
-export const logoutButton = () => {
-contentTarget.innerHTML = `
-<button class="logoutButton" id="logoutButton">Log Out</button>
+export const logoutButton = () =>  {
+    contentTarget.innerHTML = `
+        <button id="logoutButton">Log Out</button>
 `
 }
 
-eventHub.addEventListener("click", clickEvent => {
-    if(clickEvent.target.id==="logoutButton") {
-        sessionStorage.clear()
-        eventHub.dispatchEvent(new CustomEvent("userLoggedOut"))
-    }
-})

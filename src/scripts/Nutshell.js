@@ -12,6 +12,7 @@ import { FriendList } from "./Friends/FriendList.js"
 import { getUsername } from "./auth/CurrentLogin.js"
 import {logoutButton} from "./auth/Logout.js"
 
+const eventHub = document.querySelector(".container")
 
 export const Nutshell = () => {
     document.querySelector(".nutshell").classList.remove("hidden")
