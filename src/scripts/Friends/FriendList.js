@@ -7,9 +7,32 @@ import { getUsers, useUsers } from "../Users/UserDataProvider.js"
 const contentTarget = document.querySelector(".friendsContainer")
 const eventHub = document.querySelector(".container")
 
+let selectedFriendId = null
+
 eventHub.addEventListener("friendStateChanged", customEvent => {
     const updatedFriends = useFriends()
     render(updatedFriends)
+})
+
+eventHub.addEventListener("friendSelected", event => {
+    const friendId = event.detail.friendId
+    if(selectedFriendId === friendId) {
+        selectedFriendId = null
+    }
+    else {
+        selectedFriendId = friendId
+    }
+
+    const friends = useFriends()
+    render(friends)
+})
+
+eventHub.addEventListener("initiatedPrivateChat", event => {
+    const friendId = event.detail.userId
+    selectedFriendId = friendId
+
+    const friends = useFriends()
+    render(friends)
 })
 
 export const FriendList = () => {
@@ -64,7 +87,8 @@ const FriendsHTMLConverter = (users) => {
     return `
     ${
         users.map(user => {
-            return `<div id="friendList__friend--${user.id}" class="friendList__friend">${user.username}</div>
+            const selectedClassName = user.id === selectedFriendId ? "friendList__friend--selected" : ""
+            return `<div id="friendList__friend--${user.id}" class="friendList__friend ${selectedClassName}">${user.username}</div>
                     <button id="deleteFriend--${user.id}">Delete Friend</button>`
         })
     }
