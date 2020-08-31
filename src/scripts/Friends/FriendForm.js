@@ -21,7 +21,10 @@ eventHub.addEventListener("click", clickEvent => {
                 const arrOfUsers = useUsers()
                 const relatedUser = arrOfUsers.find(user => user.username.toLowerCase() === inputString.toLowerCase())
 
-                if (relatedUser !== undefined) {
+                if(relatedUser.id === parseInt(sessionStorage.getItem("activeUser"))){
+                    window.alert("You can't add yourself, silly!")
+                }
+                 else if (relatedUser !== undefined) {
                     saveFriend(parseInt(relatedUser.id))
 
                     contentTarget.innerHTML = ""
