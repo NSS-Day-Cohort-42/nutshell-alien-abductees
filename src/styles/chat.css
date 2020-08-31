@@ -24,6 +24,7 @@
 
 .message__username:disabled {
   cursor: auto;
+  color: green;
 }
 
 .message__username:hover{
