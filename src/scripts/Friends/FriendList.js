@@ -88,8 +88,11 @@ const FriendsHTMLConverter = (users) => {
     ${
         users.map(user => {
             const selectedClassName = user.id === selectedFriendId ? "friendList__friend--selected" : ""
-            return `<div id="friendList__friend--${user.id}" class="friendList__friend ${selectedClassName}">${user.username}</div>
-                    <button id="deleteFriend--${user.id}">Delete Friend</button>`
+            return `
+                <div class="friendList__friend-wrapper">
+                    <div id="friendList__friend--${user.id}" class="friendList__friend ${selectedClassName}">${user.username}</div>
+                    <button id="deleteFriend--${user.id}">Delete Friend</button>
+                </div>`
         })
     }
     `
