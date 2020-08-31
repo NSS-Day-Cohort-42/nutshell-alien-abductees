@@ -10,7 +10,7 @@ Make sure you have Node.js and npm installed
 1. `touch database.json` file in the `api` directory
 1. Delete the `.ignore` file in the `api` directory
 1. `touch Settings.js` and drag into .gitignore
-1. Visit <https://openweathermap.org/guide#api> to create an account and get your API key
+1. Visit <https://openweathermap.org/guide#how> to create an account and get your API key
 1. in `Settings.js` `export default {
     weatherKey: "your API key here"
 }`
