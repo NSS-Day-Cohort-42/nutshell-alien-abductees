@@ -11,3 +11,7 @@ export const getUsers = () => {
 export const useUsers = () => {
     return users.slice()
 }
+
+export const useUserByName = username => {
+    return users.find(user => user.username.toLowerCase() === username.toLowerCase())
+}
