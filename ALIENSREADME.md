@@ -29,3 +29,7 @@ Make sure you have Node.js and npm installed
 * User can view weather for each event (if it is within the next 5 days)
 * User can add a new friend by entering username into Friend Form or by clicking on Friend in the Chat window
 * User can message a friend publicly or privately
+
+# Planning Links
+1. [ERD](https://dbdiagram.io/d/5f4522ea7b2e2f40e9deb4fe)
+1. [Wireframe](https://miro.com/app/board/o9J_kmqQ4As=/)
